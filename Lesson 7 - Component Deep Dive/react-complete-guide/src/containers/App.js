@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/People/Person/Person'
+import People from '../components/People/People';
+import { peopleData } from '../data/peopleData';
+import Cockpit from '../components/Cockpit/Cockpit';
 
-const people = [
-    {
-        id: 1,
-        name: 'Max',
-        age: 28,
-        children: null
-    },
-    {
-        id: 2,
-        name: 'Manu',
-        age: 29,
-        children: 'My Hobbies: Racing'
-    },
-    {
-        id: 3,
-        name: 'Stephanie',
-        age: 26,
-        children: null
-    }
-];
 
 class App extends Component {
     state = {
-        people,
-        otherState: 'some other value',
+        people: peopleData,
         showPeople: false
     };
 
@@ -58,41 +39,17 @@ class App extends Component {
     };
 
     render() {
-        let peopleElems = null;
-        if (this.state.showPeople) {
-            peopleElems = this.state.people.map((person, index) => (
-                <Person
-                    key={person.id}
-                    click={this.deletePersonHandler.bind(this, index)}
-                    change={event => this.nameChangedHandler(event, person.id)}
-                    name={person.name}
-                    age={person.age}>
-                    {person.children}
-                </Person>
-            ));
-        }
-
-        const pClasses = [];
-        if (this.state.people.length <= 2) {
-            pClasses.push(classes.red);
-        }
-
-        if (this.state.people.length <= 1) {
-            pClasses.push(classes.bold);
-        }
-
-        const bClasses = [];
-        if (this.state.showPeople) {
-            bClasses.push(classes.Red);
-        }
-
         return (
             <div className={classes.App}>
-                <h1>Hi, I'm a React App</h1>
-                <p className={pClasses.join(' ')}>This is really working</p>
-                <button className={bClasses.join(' ')} onClick={this.togglePersonsHandler}>Toggle People</button>
-                {peopleElems}
-                <p>{this.state.otherState}</p>
+                <Cockpit
+                    peopleLength={this.state.people.length}
+                    showPeople={this.state.showPeople}
+                    togglePeople={this.togglePersonsHandler} />
+                <People
+                    showPeople={this.state.showPeople}
+                    people={this.state.people}
+                    personClicked={this.deletePersonHandler}
+                    personNameChanged={this.nameChangedHandler} />
             </div>
         );
     }
