@@ -3,7 +3,21 @@ import Person from './Person/Person';
 
 class People extends Component {
 
+    constructor(props) {
+        super(props);
+        console.log('[People.js] Inside Constructor', props);
+    }
+
+    componentWillMount() {
+        console.log('[People.js] Inside componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('[People.js] Inside componentDidMount');
+    }
+
     render() {
+        console.log('[People.js] Inside Render');
         let peopleElems = null;
         if (this.props.showPeople) {
             peopleElems = this.props.people.map((person, index) => (

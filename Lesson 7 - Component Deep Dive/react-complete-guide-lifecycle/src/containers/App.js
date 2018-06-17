@@ -11,6 +11,19 @@ class App extends Component {
         showPeople: false
     };
 
+    constructor(props) {
+        super(props);
+        console.log('[App.js] Inside Constructor', props);
+    }
+
+    componentWillMount() {
+        console.log('[App.js] Inside componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('[App.js] Inside componentDidMount');
+    }
+
     togglePersonsHandler = event => {
         const doesShow = this.state.showPeople;
         this.setState({
@@ -39,6 +52,7 @@ class App extends Component {
     };
 
     render() {
+        console.log('[App.js] Inside Render');
         return (
             <div className={classes.App}>
                 <Cockpit
