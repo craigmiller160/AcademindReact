@@ -24,7 +24,7 @@ export default class App extends Component {
 
     render() {
         const charElems = [...this.state.text].map((letter, index) => (
-            <Char letter={letter} index={index} key={index} click={this.removeLetterHandler.bind(this, index)} /> //TODO need a better key here
+            <Char letter={letter} index={index} key={index} click={this.removeLetterHandler.bind(this, index)} />
         ));
 
         return (
