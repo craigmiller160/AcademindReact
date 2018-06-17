@@ -68,14 +68,6 @@ class App extends Component {
     };
 
     render() {
-        const style = {
-            backgroundColor: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer'
-        };
-
         let peopleElems = null;
         if (this.state.showPeople) {
             peopleElems = this.state.people.map((person, index) => (
@@ -99,11 +91,16 @@ class App extends Component {
             pClasses.push(classes.bold);
         }
 
+        const bClasses = [];
+        if (this.state.showPeople) {
+            bClasses.push(classes.Red);
+        }
+
         return (
             <div className={classes.App}>
                 <h1>Hi, I'm a React App</h1>
                 <p className={pClasses.join(' ')}>This is really working</p>
-                <button style={style} onClick={this.togglePersonsHandler}>Toggle People</button>
+                <button className={bClasses.join(' ')} onClick={this.togglePersonsHandler}>Toggle People</button>
                 {peopleElems}
                 <p>{this.state.otherState}</p>
             </div>
