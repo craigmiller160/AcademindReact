@@ -23,7 +23,8 @@ const people = [
 export default class App extends Component {
     state = {
         people,
-        otherState: 'some other value'
+        otherState: 'some other value',
+        showPeople: false
     };
 
     // noinspection JSMethodCanBeStatic
@@ -36,7 +37,14 @@ export default class App extends Component {
         });
     };
 
-    nameChangedHandler = (event) => {
+    togglePersonsHandler = event => {
+        const doesShow = this.state.showPeople;
+        this.setState({
+            showPeople: !doesShow
+        })
+    };
+
+    nameChangedHandler = event => {
         const newPeople = people.slice();
         newPeople[1].name = event.target.value;
         this.setState({
@@ -53,33 +61,39 @@ export default class App extends Component {
             cursor: 'pointer'
         };
 
+        let peopleElems = null;
+        if (this.state.showPeople) {
+            peopleElems = (
+                <div>
+                    <Person
+                        click={this.switchNameHandler.bind(this, 'Max!')}
+                        change={this.nameChangedHandler}
+                        name={this.state.people[0].name}
+                        age={this.state.people[0].age} />
+                    <Person
+                        click={this.switchNameHandler.bind(this, 'Max!')}
+                        change={this.nameChangedHandler}
+                        name={this.state.people[1].name}
+                        age={this.state.people[1].age}>
+                        My Hobbies: Racing
+                    </Person>
+                    <Person
+                        click={this.switchNameHandler.bind(this, 'Max!')}
+                        change={this.nameChangedHandler}
+                        name={this.state.people[2].name}
+                        age={this.state.people[2].age} />
+                </div>
+            );
+        }
+
         return (
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p>This is really working</p>
-                <button style={style} onClick={() => this.switchNameHandler('Maximilian')}>Switch Name</button>
-                <Person
-                    click={this.switchNameHandler.bind(this, 'Max!')}
-                    change={this.nameChangedHandler}
-                    name={this.state.people[0].name}
-                    age={this.state.people[0].age} />
-                <Person
-                    click={this.switchNameHandler.bind(this, 'Max!')}
-                    change={this.nameChangedHandler}
-                    name={this.state.people[1].name}
-                    age={this.state.people[1].age}>
-                    My Hobbies: Racing
-                </Person>
-                <Person
-                    click={this.switchNameHandler.bind(this, 'Max!')}
-                    change={this.nameChangedHandler}
-                    name={this.state.people[2].name}
-                    age={this.state.people[2].age} />
+                <button style={style} onClick={this.togglePersonsHandler}>Toggle People</button>
+                {peopleElems}
                 <p>{this.state.otherState}</p>
             </div>
         );
-    //   return React.createElement('div', {className: 'App'},
-    //       React.createElement('h1', null, 'Hi, I\'m a React App')
-    //   );
     }
 }
