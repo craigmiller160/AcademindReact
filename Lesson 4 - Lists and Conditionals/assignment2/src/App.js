@@ -15,9 +15,16 @@ export default class App extends Component {
         });
     };
 
+    removeLetterHandler = index => {
+        const text = this.state.text;
+        this.setState({
+            text: text.slice(0, index) + text.slice(index + 1, text.length)
+        });
+    };
+
     render() {
-        const charElems = [...this.state.text].map(letter => (
-            <Char letter={letter} />
+        const charElems = [...this.state.text].map((letter, index) => (
+            <Char letter={letter} index={index} key={index} click={this.removeLetterHandler.bind(this, index)} /> //TODO need a better key here
         ));
 
         return (

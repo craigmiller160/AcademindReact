@@ -3,7 +3,7 @@ import './Char.css';
 
 export default props => {
     return (
-        <div className="Char">
+        <div className="Char" onClick={props.click}>
             <p>{props.letter}</p>
         </div>
     );
