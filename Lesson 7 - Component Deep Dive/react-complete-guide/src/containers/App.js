@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person'
+import Person from '../components/People/Person/Person'
 
 const people = [
     {
@@ -28,16 +28,6 @@ class App extends Component {
         people,
         otherState: 'some other value',
         showPeople: false
-    };
-
-    // noinspection JSMethodCanBeStatic
-    switchNameHandler = (newName) => {
-        // DON'T DO THIS: this.state.people[0].name = 'Maximilian';
-        const newPeople = this.state.people.slice();
-        newPeople[0].name = newName;
-        this.setState({
-            people: newPeople
-        });
     };
 
     togglePersonsHandler = event => {
