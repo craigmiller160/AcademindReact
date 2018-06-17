@@ -23,7 +23,7 @@ const people = [
     }
 ];
 
-export default class App extends Component {
+class App extends Component {
     state = {
         people,
         otherState: 'some other value',
@@ -101,3 +101,5 @@ export default class App extends Component {
         );
     }
 }
+
+export default App;
