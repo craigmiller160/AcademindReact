@@ -20,7 +20,9 @@ const Square = props => {
     }
 
     return (
-        <div className={classList.join(' ')} />
+        <div className={classList.join(' ')}>
+            {props.value}
+        </div>
     );
 };
 
