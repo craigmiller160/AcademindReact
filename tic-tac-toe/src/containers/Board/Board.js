@@ -8,19 +8,19 @@ class Board extends Component {
         return (
             <div className={classes.Board}>
                 <div>
-                    <Square />
-                    <Square />
-                    <Square />
+                    <Square top={true} left={true} />
+                    <Square top={true} />
+                    <Square top={true} right={true} />
                 </div>
                 <div>
+                    <Square left={true} />
                     <Square />
-                    <Square />
-                    <Square />
+                    <Square right={true} />
                 </div>
                 <div>
-                    <Square />
-                    <Square />
-                    <Square />
+                    <Square bottom={true} left={true} />
+                    <Square bottom={true} />
+                    <Square bottom={true} right={true} />
                 </div>
             </div>
         );
