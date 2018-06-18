@@ -21,7 +21,7 @@ const Square = props => {
 
     return (
         <div className={classList.join(' ')}>
-            {props.value}
+            <p>{props.value}</p>
         </div>
     );
 };

@@ -23,3 +23,12 @@
 .Square.right {
     border-left: 1px solid black;
 }
+
+.Square > p {
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+}
