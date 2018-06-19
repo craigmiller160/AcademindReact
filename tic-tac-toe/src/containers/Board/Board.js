@@ -13,7 +13,7 @@ class Board extends Component {
             },
             middle: {
                 left: '',
-                middle: 'X', //TODO clear this value
+                middle: '',
                 right: ''
             },
             bottom: {

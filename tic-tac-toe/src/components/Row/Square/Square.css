@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding: 0 auto;
     text-align: center;
+    vertical-align: top;
 }
 
 .Square.top {
@@ -25,10 +26,8 @@
 }
 
 .Square > p {
-    display: block;
     font-size: 40px;
     font-weight: bold;
     margin-top: 30px;
-    width: 100%;
-    height: 100%;
+    padding: 0;
 }
