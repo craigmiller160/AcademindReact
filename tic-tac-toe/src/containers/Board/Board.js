@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Board.css';
 import Row from '../../components/Row/Row';
+import squareValueMap from '../../data/squareValueMap';
 
 class Board extends Component {
 
