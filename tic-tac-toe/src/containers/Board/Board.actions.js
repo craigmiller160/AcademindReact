@@ -31,7 +31,7 @@ export const updateSpace = (key, spaces) => {
             spaces.bottom.right = squareValueMap.get(spaces.bottom.right);
             break;
         default:
-            throw `Invalid square name: ${key}`;
+            throw new Error(`Invalid square name: ${key}`);
     }
     return spaces;
 };
