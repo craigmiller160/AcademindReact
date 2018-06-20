@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Square.css';
 import { getSquareName } from '../../../data/squareNames';
 
@@ -28,6 +29,15 @@ const Square = props => {
             <p>{props.value}</p>
         </div>
     );
+};
+
+Square.propTypes = {
+    top: PropTypes.bool,
+    bottom: PropTypes.bool,
+    left: PropTypes.bool,
+    right: PropTypes.bool,
+    value: PropTypes.string.isRequired,
+    squareClick: PropTypes.func.isRequired
 };
 
 export default Square;
