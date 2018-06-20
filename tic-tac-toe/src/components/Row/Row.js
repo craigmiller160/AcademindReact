@@ -9,16 +9,19 @@ const Row = props => {
                 top={props.top}
                 bottom={props.bottom}
                 left={true}
-                value={props.spaces.left} />
+                value={props.spaces.left}
+                squareClick={props.squareClick} />
             <Square
                 top={props.top}
                 bottom={props.bottom}
-                value={props.spaces.middle} />
+                value={props.spaces.middle}
+                squareClick={props.squareClick} />
             <Square
                 top={props.top}
                 bottom={props.bottom}
                 right={true}
-                value={props.spaces.right} />
+                value={props.spaces.right}
+                squareClick={props.squareClick} />
         </div>
     );
 };

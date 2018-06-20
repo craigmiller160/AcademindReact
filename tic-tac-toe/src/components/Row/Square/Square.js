@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Square.css';
+import { getSquareName } from '../../../data/squareNames';
 
 const Square = props => {
     const classList = [classes.Square];
@@ -19,8 +20,11 @@ const Square = props => {
         classList.push(classes.bottom);
     }
 
+    const squareName = getSquareName(props.top, props.bottom, props.left, props.right);
+
+    //TODO should I bind "this" here? Ask the question somewhere
     return (
-        <div className={classList.join(' ')}>
+        <div className={classList.join(' ')} onClick={() => props.squareClick(squareName)}>
             <p>{props.value}</p>
         </div>
     );

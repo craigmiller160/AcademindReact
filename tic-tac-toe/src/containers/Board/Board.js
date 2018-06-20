@@ -25,17 +25,24 @@ class Board extends Component {
         }
     };
 
+    squareClickedHandler = key => {
+        //TODO finish this
+    };
+
     render() {
         return (
             <div className={classes.Board}>
                 <Row
                     top={true}
-                    spaces={this.state.spaces.top} />
+                    spaces={this.state.spaces.top}
+                    squareClick={this.squareClickedHandler} />
                 <Row
-                    spaces={this.state.spaces.middle} />
+                    spaces={this.state.spaces.middle}
+                    squareClick={this.squareClickedHandler} />
                 <Row
                     bottom={true}
-                    spaces={this.state.spaces.bottom} />
+                    spaces={this.state.spaces.bottom}
+                    squareClick={this.squareClickedHandler} />
             </div>
         );
     }
