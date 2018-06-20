@@ -35,3 +35,67 @@ export const updateSpace = (key, spaces) => {
     }
     return spaces;
 };
+
+//TODO can be made more efficient, but probably dosn't matter for now
+export const victoryValidation = spaces => {
+    //Top Row
+    let winner = someoneHasWon([spaces.top.left, spaces.top.middle, spaces.top.right]);
+
+    //Middle Row
+    if (!winner) {
+        winner = someoneHasWon([spaces.middle.left, spaces.middle.middle, spaces.middle.right]);
+    }
+
+    //Bottom Row
+    if (!winner) {
+        winner = someoneHasWon([spaces.bottom.left, spaces.bottom.middle, spaces.bottom.right]);
+    }
+
+    //Left Col
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.left, spaces.middle.left, spaces.bottom.left]);
+    }
+
+    //Middle Col
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.middle, spaces.middle.middle, spaces.bottom.middle]);
+    }
+
+    //Right Col
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.right, spaces.middle.right, spaces.bottom.right]);
+    }
+
+    //Top Left Corner -> Bottom Right Corner
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.left, spaces.middle.middle, spaces.bottom.right]);
+    }
+
+    //Bottom Left Corner -> Top Right Corner
+    if (!winner) {
+        winner = someoneHasWon([spaces.bottom.left, spaces.middle.middle, spaces.top.right]);
+    }
+
+
+    return winner;
+};
+
+const someoneHasWon = valueArray => {
+    let foundValue;
+    let allSame = true;
+    valueArray.some(value => {
+        if (!foundValue) {
+            foundValue = value;
+            return true;
+        }
+        else {
+            allSame = foundValue === value;
+            return allSame;
+        }
+
+    });
+
+    if (allSame) {
+        return foundValue;
+    }
+};
