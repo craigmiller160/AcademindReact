@@ -10,3 +10,33 @@ export const MIDDLE_RIGHT = 'MIDDLE_RIGHT';
 export const BOTTOM_LEFT = 'BOTTOM_LEFT';
 export const BOTTOM_MIDDLE = 'BOTTOM_MIDDLE';
 export const BOTTOM_RIGHT = 'BOTTOM_RIGHT';
+
+export const getSquareName = (top, bottom, left, right) => {
+    if (top && left) {
+        return TOP_LEFT;
+    }
+    else if (top && right) {
+        return TOP_RIGHT;
+    }
+    else if (top) {
+        return TOP_MIDDLE;
+    }
+    else if (bottom && left) {
+        return BOTTOM_LEFT;
+    }
+    else if (bottom && right) {
+        return BOTTOM_RIGHT;
+    }
+    else if (bottom) {
+        return BOTTOM_MIDDLE;
+    }
+    else if (left) {
+        return MIDDLE_LEFT;
+    }
+    else if (right) {
+        return MIDDLE_RIGHT;
+    }
+    else {
+        return MIDDLE_MIDDLE;
+    }
+};
