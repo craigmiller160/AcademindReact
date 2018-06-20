@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Board.css';
 import Row from '../../components/Row/Row';
-import squareValueMap from '../../data/squareValueMap';
-import * as squareNames from '../../data/squareNames';
+import { updateSpace } from './Board.actions';
 
 class Board extends Component {
 
@@ -27,39 +26,9 @@ class Board extends Component {
     };
 
     squareClickedHandler = key => {
-        const newSpaces = {...this.state.spaces};
-        switch (key) {
-            case squareNames.TOP_LEFT:
-                newSpaces.top.left = squareValueMap.get(this.state.spaces.top.left);
-                break;
-            case squareNames.TOP_MIDDLE:
-                newSpaces.top.middle = squareValueMap.get(this.state.spaces.top.middle);
-                break;
-            case squareNames.TOP_RIGHT:
-                newSpaces.top.right = squareValueMap.get(this.state.spaces.top.right);
-                break;
-            case squareNames.MIDDLE_LEFT:
-                newSpaces.middle.left = squareValueMap.get(this.state.spaces.middle.left);
-                break;
-            case squareNames.MIDDLE_MIDDLE:
-                newSpaces.middle.middle = squareValueMap.get(this.state.spaces.middle.middle);
-                break;
-            case squareNames.MIDDLE_RIGHT:
-                newSpaces.middle.right = squareValueMap.get(this.state.spaces.middle.right);
-                break;
-            case squareNames.BOTTOM_LEFT:
-                newSpaces.bottom.left = squareValueMap.get(this.state.spaces.bottom.left);
-                break;
-            case squareNames.BOTTOM_MIDDLE:
-                newSpaces.bottom.middle = squareValueMap.get(this.state.spaces.bottom.middle);
-                break;
-            case squareNames.BOTTOM_RIGHT:
-                newSpaces.bottom.right = squareValueMap.get(this.state.spaces.bottom.right);
-                break;
-        }
-
+        const spaces = updateSpace(key, {...this.state.spaces});
         this.setState({
-            spaces: newSpaces
+            spaces
         });
     };
 
