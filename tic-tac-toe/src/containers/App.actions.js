@@ -76,7 +76,6 @@ export const victoryValidation = spaces => {
         winner = someoneHasWon([spaces.bottom.left, spaces.middle.middle, spaces.top.right]);
     }
 
-
     return winner;
 };
 

@@ -1,4 +1,4 @@
-import { TicTacToeRow } from "./TicTacToeRow";
+import { TicTacToeRow } from './TicTacToeRow';
 
 export class TicTacToe {
     constructor(public top = new TicTacToeRow(),

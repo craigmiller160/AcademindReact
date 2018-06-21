@@ -1,6 +1,6 @@
 import * as squareNames from '../../data/squareNames';
 import squareValueMap from '../../data/squareValueMap';
-import { TicTacToe } from "../../data/TicTacToe/TicTacToe";
+import { TicTacToe } from '../../data/TicTacToe/TicTacToe';
 
 export const updateSpace = (key: string, spaces: TicTacToe): TicTacToe => {
     switch (key) {
@@ -38,4 +38,48 @@ export const updateSpace = (key: string, spaces: TicTacToe): TicTacToe => {
     return spaces;
 };
 
-// TODO still need to finish this
+export const victoryValidation = (spaces: TicTacToe): string => {
+    // Top Row
+    let winner = someoneHasWon([spaces.top.left, spaces.top.middle, spaces.top.right]);
+
+    // Middle Row
+    if (!winner) {
+        winner = someoneHasWon([spaces.middle.left, spaces.middle.middle, spaces.middle.right]);
+    }
+
+    // Bottom Row
+    if (!winner) {
+        winner = someoneHasWon([spaces.bottom.left, spaces.bottom.middle, spaces.bottom.right]);
+    }
+
+    // Left Col
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.left, spaces.middle.left, spaces.bottom.left]);
+    }
+
+    // Middle Col
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.middle, spaces.middle.middle, spaces.bottom.middle]);
+    }
+
+    // Right Col
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.right, spaces.middle.right, spaces.bottom.right]);
+    }
+
+    // Top Left Corner -> Bottom Right Corner
+    if (!winner) {
+        winner = someoneHasWon([spaces.top.left, spaces.middle.middle, spaces.bottom.right]);
+    }
+
+    // Bottom Left Corner -> Top Right Corner
+    if (!winner) {
+        winner = someoneHasWon([spaces.bottom.left, spaces.middle.middle, spaces.top.right]);
+    }
+
+    return winner;
+};
+
+const someoneHasWon = (valueArray: string[]): string => {
+    return ''; // TODO finish this
+};
