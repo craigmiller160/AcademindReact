@@ -3,7 +3,7 @@ import classes from './App.css';
 import Board from '../components/Board/Board';
 import Header from '../components/Header/Header';
 import Winner from '../components/Winner/Winner';
-import { updateSpace } from './App.actions';
+import { updateSpace, getWinner } from './App.actions';
 
 class App extends Component {
 
@@ -24,13 +24,16 @@ class App extends Component {
                 middle: '',
                 right: ''
             }
-        }
+        },
+        winner: ''
     };
 
     squareClickedHandler = key => {
         const spaces = updateSpace(key, {...this.state.spaces});
+        const winner = getWinner(spaces);
         this.setState({
-            spaces
+            spaces,
+            winner
         });
     };
 
@@ -41,7 +44,7 @@ class App extends Component {
                 <Board
                     spaces={this.state.spaces}
                     squareClick={this.squareClickedHandler} />
-                <Winner />
+                <Winner winner={this.state.winner} />
             </div>
         );
     }

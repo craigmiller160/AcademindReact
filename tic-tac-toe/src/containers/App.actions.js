@@ -37,7 +37,7 @@ export const updateSpace = (key, spaces) => {
 };
 
 //TODO can be made more efficient, but probably dosn't matter for now
-export const victoryValidation = spaces => {
+export const getWinner = spaces => {
     //Top Row
     let winner = someoneHasWon([spaces.top.left, spaces.top.middle, spaces.top.right]);
 
@@ -81,21 +81,8 @@ export const victoryValidation = spaces => {
 };
 
 const someoneHasWon = valueArray => {
-    let foundValue;
-    let allSame = true;
-    valueArray.some(value => {
-        if (!foundValue) {
-            foundValue = value;
-            return true;
-        }
-        else {
-            allSame = foundValue === value;
-            return allSame;
-        }
-
-    });
-
-    if (allSame) {
-        return foundValue;
+    if (valueArray[0] === valueArray[1] && valueArray[1] === valueArray[2]) {
+        return valueArray[0];
     }
+    return '';
 };
