@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classes from './App.css';
 import { AppState } from "./AppState";
-import { TicTacToe } from "../data/TicTacToe";
+import { TicTacToe } from "../../data/TicTacToe";
 
 class App extends React.Component<{},AppState> {
 

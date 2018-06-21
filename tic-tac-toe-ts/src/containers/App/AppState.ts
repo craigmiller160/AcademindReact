@@ -1,4 +1,4 @@
-import { TicTacToe } from "../data/TicTacToe";
+import { TicTacToe } from "../../data/TicTacToe";
 
 
 export interface AppState {
