@@ -1,10 +1,4 @@
-
-
-export class TicTacToeRow {
-    constructor(public left = '',
-                public middle = '',
-                public right = '') { }
-}
+import { TicTacToeRow } from "./TicTacToeRow";
 
 export class TicTacToe {
     constructor(public top = new TicTacToeRow(),

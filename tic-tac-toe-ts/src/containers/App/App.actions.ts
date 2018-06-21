@@ -1,6 +1,6 @@
-import squareValueMap from '../../data/squareValueMap';
 import * as squareNames from '../../data/squareNames';
-import { TicTacToe } from "../../data/TicTacToe";
+import squareValueMap from '../../data/squareValueMap';
+import { TicTacToe } from "../../data/TicTacToe/TicTacToe";
 
 export const updateSpace = (key: string, spaces: TicTacToe): TicTacToe => {
     switch (key) {
@@ -37,3 +37,5 @@ export const updateSpace = (key: string, spaces: TicTacToe): TicTacToe => {
 
     return spaces;
 };
+
+// TODO still need to finish this

@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { TicTacToe } from "../../data/TicTacToe/TicTacToe";
 import * as classes from './App.css';
-import { AppState } from "./AppState";
-import { TicTacToe } from "../../data/TicTacToe";
+import { IAppState } from "./IAppState";
 
-class App extends React.Component<{},AppState> {
+class App extends React.Component<{},IAppState> {
 
-    state = {
+    public state = {
         spaces: new TicTacToe(),
         winner: ''
     };
