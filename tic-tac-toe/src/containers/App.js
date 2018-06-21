@@ -3,7 +3,7 @@ import classes from './App.css';
 import Board from '../components/Board/Board';
 import Header from '../components/Header/Header';
 import Winner from '../components/Winner/Winner';
-import { updateSpace } from './Board/Board.actions';
+import { updateSpace } from './App.actions';
 
 class App extends Component {
 
