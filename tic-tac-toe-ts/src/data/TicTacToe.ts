@@ -1,13 +1,13 @@
 
 
 export class TicTacToeRow {
-    constructor(public left?: string,
-                public middle?: string,
-                public right?: string) { }
+    constructor(public left = '',
+                public middle = '',
+                public right = '') { }
 }
 
 export class TicTacToe {
-    constructor(public top?: TicTacToeRow,
-                public middle?: TicTacToeRow,
-                public right?: TicTacToeRow) { }
+    constructor(public top = new TicTacToeRow(),
+                public middle =new TicTacToeRow(),
+                public bottom = new TicTacToeRow()) { }
 }
