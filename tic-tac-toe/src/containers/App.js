@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Board from './Board/Board';
 import Header from '../components/Header/Header';
+import Winner from '../components/Winner/Winner';
 
 class App extends Component {
     render() {
@@ -9,6 +10,7 @@ class App extends Component {
             <div className={classes.App}>
                 <Header />
                 <Board />
+                <Winner />
             </div>
         );
     }

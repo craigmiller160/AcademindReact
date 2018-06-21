@@ -1,0 +1,10 @@
+
+.Winner {
+    width: 100%;
+    height: 50px;
+}
+
+.Winner > p {
+    vertical-align: center;
+    font-size: 30px;
+}
