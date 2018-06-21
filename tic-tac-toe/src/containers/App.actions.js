@@ -1,5 +1,5 @@
-import squareValueMap from '../../data/squareValueMap';
-import * as squareNames from '../../data/squareNames';
+import squareValueMap from '../data/squareValueMap';
+import * as squareNames from '../data/squareNames';
 
 export const updateSpace = (key, spaces) => {
     switch (key) {

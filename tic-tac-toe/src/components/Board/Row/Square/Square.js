@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Square.css';
-import { getSquareName } from '../../../data/squareNames';
+import { getSquareName } from '../../../../data/squareNames';
 
 const Square = props => {
     const classList = [classes.Square];
