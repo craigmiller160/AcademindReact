@@ -30,4 +30,12 @@ const Square: React.SFC<ISquareProps> = props => {
     );
 };
 
+Square.defaultProps = {
+    top: false,
+    bottom: false,
+    right: false,
+    left: false,
+    value: ''
+};
+
 export default Square;
