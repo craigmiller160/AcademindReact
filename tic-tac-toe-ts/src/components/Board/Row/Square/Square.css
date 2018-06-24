@@ -1,0 +1,33 @@
+
+.Square {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 auto;
+    text-align: center;
+    vertical-align: top;
+}
+
+.Square.top {
+    border-bottom: 1px solid black;
+}
+
+.Square.left {
+    border-right: 1px solid black;
+}
+
+.Square.bottom {
+    border-top: 1px solid black;
+}
+
+.Square.right {
+    border-left: 1px solid black;
+}
+
+.Square > p {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 0;
+}

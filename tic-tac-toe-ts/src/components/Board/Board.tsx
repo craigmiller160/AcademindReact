@@ -5,7 +5,7 @@ import { IBoardProps } from './IBoardProps';
 const Board: React.SFC<IBoardProps> = props => {
     return (
         <div className={classes.Board}>
-
+            <p>Board component</p>
         </div>
     )
 };
