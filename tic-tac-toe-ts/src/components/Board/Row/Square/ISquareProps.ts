@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { MouseEvent } from 'react';
 
 export interface ISquareProps {
     top: boolean;
@@ -6,5 +6,5 @@ export interface ISquareProps {
     right: boolean;
     left: boolean;
     value: string;
-    squareClick: (event: React.MouseEvent) => void;
+    squareClick: (event: MouseEvent) => void;
 }

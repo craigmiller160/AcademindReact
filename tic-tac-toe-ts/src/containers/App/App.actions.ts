@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { MouseEvent } from 'react';
 import * as squareNames from '../../data/squareNames';
 import squareValueMap from '../../data/squareValueMap';
 import { TicTacToe } from '../../data/TicTacToe/TicTacToe';
@@ -14,7 +14,7 @@ const findSquareDiv = (element: HTMLElement): HTMLDivElement | null => {
     return null;
 };
 
-export const updateSpace = (event: React.MouseEvent<HTMLElement>, spaces: TicTacToe): TicTacToe => {
+export const updateSpace = (event: MouseEvent<HTMLElement>, spaces: TicTacToe): TicTacToe => {
     const squareDiv = findSquareDiv((event.target as HTMLElement));
     if (!squareDiv) {
         throw new Error('Unable to find div with metadata for clicked square');
