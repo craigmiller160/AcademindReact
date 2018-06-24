@@ -81,5 +81,8 @@ export const victoryValidation = (spaces: TicTacToe): string => {
 };
 
 const someoneHasWon = (valueArray: string[]): string => {
-    return ''; // TODO finish this
+    if (valueArray[0] === valueArray[1] && valueArray[1] === valueArray[2]) {
+        return valueArray[0];
+    }
+    return '';
 };
