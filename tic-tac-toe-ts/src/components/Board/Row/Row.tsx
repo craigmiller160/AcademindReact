@@ -7,19 +7,19 @@ const Row: React.SFC<IRowProps> = props => {
     return (
         <div>
             <Square
-                top={props.top}
                 bottom={props.bottom}
                 left={true}
                 right={false}
-                value={props.spaces.left}
-                squareClick={props.squareClick} />
-            <Square
+                squareClick={props.squareClick}
                 top={props.top}
+                value={props.spaces.left} />
+            <Square
                 bottom={props.bottom}
-                value={props.spaces.middle}
                 left={false}
                 right={false}
-                squareClick={props.squareClick} />
+                squareClick={props.squareClick}
+                top={props.top}
+                value={props.spaces.middle} />
             <Square
                 top={props.top}
                 bottom={props.bottom}
@@ -32,8 +32,8 @@ const Row: React.SFC<IRowProps> = props => {
 };
 
 Row.defaultProps = {
-    top: false,
-    bottom: false
+    bottom: false,
+    top: false
 };
 
 export default Row;

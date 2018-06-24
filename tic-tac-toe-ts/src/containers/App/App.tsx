@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Header from "../../components/Header/Header";
+import Board from "../../components/Board/Board";
 import { TicTacToe } from "../../data/TicTacToe/TicTacToe";
 import { updateSpace } from './App.actions';
 import * as classes from './App.css';
@@ -23,6 +24,9 @@ class App extends React.Component<{},IAppState> {
         return (
             <div className={classes.App}>
                 <Header />
+                <Board
+                    spaces={this.state.spaces}
+                    squareClick={this.squareClickHandler} />
             </div>
         );
     }
