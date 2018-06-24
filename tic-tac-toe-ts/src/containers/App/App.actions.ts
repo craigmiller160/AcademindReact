@@ -56,7 +56,7 @@ export const updateSpace = (event: React.MouseEvent<HTMLElement>, spaces: TicTac
     return spaces;
 };
 
-export const victoryValidation = (spaces: TicTacToe): string => {
+export const getWinner = (spaces: TicTacToe): string => {
     // Top Row
     let winner = someoneHasWon([spaces.top.left, spaces.top.middle, spaces.top.right]);
 
