@@ -1,8 +1,26 @@
+import * as React from 'react';
 import * as squareNames from '../../data/squareNames';
 import squareValueMap from '../../data/squareValueMap';
 import { TicTacToe } from '../../data/TicTacToe/TicTacToe';
 
-export const updateSpace = (key: string, spaces: TicTacToe): TicTacToe => {
+const findSquareDiv = (element: HTMLElement): HTMLDivElement | null => {
+    if (element instanceof HTMLDivElement) {
+        return element;
+    }
+
+    if (element.parentElement) {
+        return findSquareDiv(element.parentElement);
+    }
+    return null;
+};
+
+export const updateSpace = (event: React.MouseEvent<HTMLElement>, spaces: TicTacToe): TicTacToe => {
+    const squareDiv = findSquareDiv((event.target as HTMLElement));
+    if (!squareDiv) {
+        throw new Error('Unable to find div with metadata for clicked square');
+    }
+    const key = squareDiv.getAttribute('data-value');
+
     switch (key) {
         case squareNames.TOP_LEFT:
             spaces.top.left = squareValueMap.get(spaces.top.left) as string;

@@ -24,17 +24,17 @@ const Square: React.SFC<ISquareProps> = props => {
     const squareName = getSquareName(props.top, props.bottom, props.left, props.right);
 
     return (
-        <div className={classList.join(' ')} onClick={() => props.squareClick(squareName)}>
+        <div data-value={squareName} className={classList.join(' ')} onClick={props.squareClick}>
             <p>{props.value}</p>
         </div>
     );
 };
 
 Square.defaultProps = {
-    top: false,
     bottom: false,
-    right: false,
     left: false,
+    right: false,
+    top: false,
     value: ''
 };
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Header from "../../components/Header/Header";
 import Board from "../../components/Board/Board";
+import Header from "../../components/Header/Header";
 import { TicTacToe } from "../../data/TicTacToe/TicTacToe";
 import { updateSpace } from './App.actions';
 import * as classes from './App.css';
@@ -13,8 +13,8 @@ class App extends React.Component<{},IAppState> {
         winner: ''
     };
 
-    public squareClickHandler = (key: string): void => {
-        const spaces = updateSpace(key, {...this.state.spaces});
+    public squareClickHandler = (event: React.MouseEvent<HTMLElement>): void => {
+        const spaces = updateSpace(event, {...this.state.spaces});
         this.setState({
             spaces
         });
