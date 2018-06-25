@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as classes from './Header.css';
+import React, { SFC } from 'react';
+import classes from './Header.css';
 
-const Header: React.SFC<{}> = props => {
+const Header: SFC<{}> = props => {
     return (
         <div className={classes.Header}>
             <h1>Tic-Tac-Toe</h1>

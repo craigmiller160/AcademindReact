@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import { getSquareName } from '../../../../data/squareNames';
 import { ISquareProps } from "./ISquareProps";
-import * as classes from './Square.css';
+import classes from './Square.css';
 
-const Square: React.SFC<ISquareProps> = props => {
+const Square: SFC<ISquareProps> = props => {
     const classList = [classes.Square];
     if (props.top) {
         classList.push(classes.top);

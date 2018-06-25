@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import { IWinnerProps } from "./IWinnerProps";
-import * as classes from './Winner.css';
+import classes from './Winner.css';
 
-const Winner: React.SFC<IWinnerProps> = props => {
+const Winner: SFC<IWinnerProps> = props => {
     return (
         <div>
             <hr />

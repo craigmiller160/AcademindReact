@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import { IRowProps } from "./IRowProps";
 import Square from "./Square/Square";
 
-const Row: React.SFC<IRowProps> = props => {
+const Row: SFC<IRowProps> = props => {
 
     return (
         <div>

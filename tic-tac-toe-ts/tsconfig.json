@@ -16,7 +16,9 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true, // TODO this is my first added option
+    "esModuleInterop": true // TODO this is my second added option
   },
   "exclude": [
     "node_modules",

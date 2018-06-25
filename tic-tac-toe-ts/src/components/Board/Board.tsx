@@ -1,9 +1,9 @@
-import * as React from 'react';
-import * as classes from './Board.css';
+import React, { SFC } from 'react';
+import classes from './Board.css';
 import { IBoardProps } from './IBoardProps';
 import Row from "./Row/Row";
 
-const Board: React.SFC<IBoardProps> = props => {
+const Board: SFC<IBoardProps> = props => {
     return (
         <div className={classes.Board}>
             <Row
