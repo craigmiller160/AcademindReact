@@ -3,6 +3,7 @@ import classes from './App.css';
 import People from '../components/People/People';
 import { peopleData } from '../data/peopleData';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 
 class App extends Component {
@@ -67,7 +68,7 @@ class App extends Component {
     render() {
         console.log('[App.js] Inside Render');
         return (
-            <div className={classes.App}>
+            <WithClass classes={classes.App}>
                 <Cockpit
                     title={this.props.title}
                     peopleLength={this.state.people.length}
@@ -78,7 +79,7 @@ class App extends Component {
                     people={this.state.people}
                     personClicked={this.deletePersonHandler}
                     personNameChanged={this.nameChangedHandler} />
-            </div>
+            </WithClass>
         );
     }
 }
