@@ -15,11 +15,14 @@ class App extends Component<{},IAppState> {
     };
 
     public squareClickHandler = (event: MouseEvent<HTMLElement>): void => {
-        const spaces = updateSpace(event, {...this.state.spaces});
-        const winner = getWinner(spaces);
-        this.setState({
-            spaces,
-            winner
+        event.persist();
+        this.setState(prevState => {
+            const spaces = updateSpace(event, {...prevState.spaces});
+            const winner = getWinner(spaces);
+            return {
+                spaces,
+                winner
+            }
         });
     };
 
