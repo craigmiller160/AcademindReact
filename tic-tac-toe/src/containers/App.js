@@ -29,11 +29,13 @@ class App extends Component {
     };
 
     squareClickedHandler = key => {
-        const spaces = updateSpace(key, {...this.state.spaces});
-        const winner = getWinner(spaces);
-        this.setState({
-            spaces,
-            winner
+        this.setState(prevState => {
+            const spaces = updateSpace(key, {...prevState.spaces});
+            const winner = getWinner(spaces);
+            return {
+                spaces,
+                winner
+            }
         });
     };
 
