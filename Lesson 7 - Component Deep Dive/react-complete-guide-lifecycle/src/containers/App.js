@@ -9,7 +9,9 @@ import withClass from '../hoc/withClass';
 class App extends Component {
     state = {
         people: peopleData,
-        showPeople: false
+        showPeople: false,
+        otherState: 'some other value',
+        toggleClicked: 0
     };
 
     constructor(props) {
@@ -40,9 +42,10 @@ class App extends Component {
 
     togglePersonsHandler = event => {
         const doesShow = this.state.showPeople;
-        this.setState({
-            showPeople: !doesShow
-        })
+        this.setState((prevState, props) => ({
+            showPeople: !doesShow,
+            toggleClicked: prevState.toggleClicked + 1
+        }));
     };
 
     nameChangedHandler = (event, id) => {
