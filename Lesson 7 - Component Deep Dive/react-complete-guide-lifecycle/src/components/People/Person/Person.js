@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classes from './Person.css';
-import WithClass from '../../../hoc/WithClass';
+import withClass from '../../../hoc/withClass';
 
 class Person extends Component {
 
@@ -26,11 +26,11 @@ class Person extends Component {
         const children = this.hasChildren() > 0 ? <p>{this.props.children}</p> : null;
 
         return (
-            <WithClass classes={classes.Person}>
+            <Fragment>
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 {children}
                 <input type="text" onChange={this.props.change} value={this.props.name} />
-            </WithClass>
+            </Fragment>
         );
         // return [
         //     <p key="1" onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>,
@@ -41,4 +41,4 @@ class Person extends Component {
 
 }
 
-export default Person;
+export default withClass(Person, classes.Person);

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classes from './App.css';
 import People from '../components/People/People';
 import { peopleData } from '../data/peopleData';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
 
 
 class App extends Component {
@@ -68,7 +68,7 @@ class App extends Component {
     render() {
         console.log('[App.js] Inside Render');
         return (
-            <WithClass classes={classes.App}>
+            <Fragment>
                 <Cockpit
                     title={this.props.title}
                     peopleLength={this.state.people.length}
@@ -79,9 +79,9 @@ class App extends Component {
                     people={this.state.people}
                     personClicked={this.deletePersonHandler}
                     personNameChanged={this.nameChangedHandler} />
-            </WithClass>
+            </Fragment>
         );
     }
 }
 
-export default App;
+export default withClass(App, classes.App);
