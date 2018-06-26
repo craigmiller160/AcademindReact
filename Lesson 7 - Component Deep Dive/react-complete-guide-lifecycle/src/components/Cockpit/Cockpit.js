@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './Cockpit.css';
 
 const Cockpit = props => {
@@ -11,17 +11,17 @@ const Cockpit = props => {
         pClasses.push(classes.bold);
     }
 
-    const bClasses = [];
+    const bClasses = [classes.Button];
     if (props.showPeople) {
         bClasses.push(classes.Red);
     }
 
     return (
-        <div className={classes.Cockpit}>
+        <Fragment>
             <h1>{props.title}</h1>
             <p className={pClasses.join(' ')}>This is really working</p>
             <button className={bClasses.join(' ')} onClick={props.togglePeople}>Toggle People</button>
-        </div>
+        </Fragment>
     );
 };
 
