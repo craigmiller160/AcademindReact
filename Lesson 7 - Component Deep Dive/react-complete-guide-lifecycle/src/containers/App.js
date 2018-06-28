@@ -5,13 +5,15 @@ import { peopleData } from '../data/peopleData';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 
+export const AuthContext = React.createContext(false);
 
 class App extends Component {
     state = {
         people: peopleData,
         showPeople: false,
         otherState: 'some other value',
-        toggleClicked: 0
+        toggleClicked: 0,
+        authenticated: false
     };
 
     constructor(props) {
@@ -68,6 +70,13 @@ class App extends Component {
         });
     };
 
+    loginHandler = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            authenticated: true
+        }));
+    };
+
     render() {
         console.log('[App.js] Inside Render');
         return (
@@ -76,12 +85,15 @@ class App extends Component {
                     title={this.props.title}
                     peopleLength={this.state.people.length}
                     showPeople={this.state.showPeople}
+                    login={this.loginHandler}
                     togglePeople={this.togglePersonsHandler} />
-                <People
-                    showPeople={this.state.showPeople}
-                    people={this.state.people}
-                    personClicked={this.deletePersonHandler}
-                    personNameChanged={this.nameChangedHandler} />
+                <AuthContext.Provider value={this.state.authenticated}>
+                    <People
+                        showPeople={this.state.showPeople}
+                        people={this.state.people}
+                        personClicked={this.deletePersonHandler}
+                        personNameChanged={this.nameChangedHandler} />
+                </AuthContext.Provider>
             </Fragment>
         );
     }

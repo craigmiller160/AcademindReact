@@ -21,6 +21,7 @@ const Cockpit = props => {
             <h1>{props.title}</h1>
             <p className={pClasses.join(' ')}>This is really working</p>
             <button className={bClasses.join(' ')} onClick={props.togglePeople}>Toggle People</button>
+            <button onClick={props.login}>Log in</button>
         </Fragment>
     );
 };
