@@ -6,12 +6,13 @@ const BuildControl = props => (
     <div className={classes.BuildControl}>
         <div className={classes.Label}>{props.label}</div>
         <button className={classes.Less}>Less</button>
-        <button className={classes.More}>More</button>
+        <button className={classes.More} onClick={props.added}>More</button>
     </div>
 );
 
 BuildControl.propTypes = {
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    added: PropTypes.func.isRequired
 };
 
 export default BuildControl;
