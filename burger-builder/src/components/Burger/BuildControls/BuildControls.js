@@ -28,7 +28,8 @@ const BuildControls = props => {
             key={ctrl.type}
             label={ctrl.label}
             added={() => props.ingredientAdded(ctrl.type)}
-            removed={() => props.ingredientRemoved(ctrl.type)} />
+            removed={() => props.ingredientRemoved(ctrl.type)}
+            disabled={props.disabledInfo[ctrl.type]} />
     ));
 
     return (
@@ -40,7 +41,13 @@ const BuildControls = props => {
 
 BuildControls.propTypes = {
     ingredientAdded: PropTypes.func.isRequired,
-    ingredientRemoved: PropTypes.func.isRequired
+    ingredientRemoved: PropTypes.func.isRequired,
+    disabledInfo: PropTypes.shape({
+        salad: PropTypes.bool.isRequired,
+        meat: PropTypes.bool.isRequired,
+        cheese: PropTypes.bool.isRequired,
+        bacon: PropTypes.bool.isRequired
+    }).isRequired
 };
 
 export default BuildControls;
