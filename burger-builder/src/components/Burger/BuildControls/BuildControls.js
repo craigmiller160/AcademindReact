@@ -27,7 +27,8 @@ const BuildControls = props => {
         <BuildControl
             key={ctrl.type}
             label={ctrl.label}
-            added={() => props.ingredientAdded(ctrl.type)}/>
+            added={() => props.ingredientAdded(ctrl.type)}
+            removed={() => props.ingredientRemoved(ctrl.type)} />
     ));
 
     return (
@@ -38,7 +39,8 @@ const BuildControls = props => {
 };
 
 BuildControls.propTypes = {
-    ingredientAdded: PropTypes.func.isRequired
+    ingredientAdded: PropTypes.func.isRequired,
+    ingredientRemoved: PropTypes.func.isRequired
 };
 
 export default BuildControls;
