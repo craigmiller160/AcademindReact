@@ -34,6 +34,7 @@ const BuildControls = props => {
 
     return (
         <div className={classes.BuildControls}>
+            <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
             {controlElems}
         </div>
     );
@@ -47,7 +48,8 @@ BuildControls.propTypes = {
         meat: PropTypes.bool.isRequired,
         cheese: PropTypes.bool.isRequired,
         bacon: PropTypes.bool.isRequired
-    }).isRequired
+    }).isRequired,
+    price: PropTypes.number.isRequired
 };
 
 export default BuildControls;
