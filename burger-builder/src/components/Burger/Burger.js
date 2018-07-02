@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import { ingredientsPropType } from '../../model/ingredient/BurgerIngredients';
 
 const Burger = props => {
     const ingredients = Object.keys(props.ingredients)
@@ -29,12 +29,7 @@ const Burger = props => {
 };
 
 Burger.propTypes = {
-    ingredients: PropTypes.shape({
-        salad: PropTypes.number,
-        bacon: PropTypes.number,
-        cheese: PropTypes.number,
-        meat: PropTypes.number
-    }).isRequired
+    ingredients: ingredientsPropType
 };
 
 export default Burger
