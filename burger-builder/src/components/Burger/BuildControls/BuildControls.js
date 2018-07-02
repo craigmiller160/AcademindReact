@@ -2,34 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
-
-const controls = [
-    {
-        label: 'Salad',
-        type: 'salad'
-    },
-    {
-        label: 'Bacon',
-        type: 'bacon'
-    },
-    {
-        label: 'Cheese',
-        type: 'cheese'
-    },
-    {
-        label: 'Meat',
-        type: 'meat'
-    }
-];
+import burgerIngredients from '../../../model/ingredient/BurgerIngredients';
 
 const BuildControls = props => {
-    const controlElems = controls.map(ctrl => (
+    const controlElems = burgerIngredients.map(ingredient => (
         <BuildControl
-            key={ctrl.type}
-            label={ctrl.label}
-            added={() => props.ingredientAdded(ctrl.type)}
-            removed={() => props.ingredientRemoved(ctrl.type)}
-            disabled={props.disabledInfo[ctrl.type]} />
+            key={ingredient.type}
+            label={ingredient.label}
+            added={() => props.ingredientAdded(ingredient.type)}
+            removed={() => props.ingredientRemoved(ingredient.type)}
+            disabled={props.disabledInfo[ingredient.type]} />
     ));
 
     return (
