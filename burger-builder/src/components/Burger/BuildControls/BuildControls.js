@@ -36,6 +36,7 @@ const BuildControls = props => {
         <div className={classes.BuildControls}>
             <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
             {controlElems}
+            <button className={classes.OrderButton}>ORDER NOW</button>
         </div>
     );
 };
