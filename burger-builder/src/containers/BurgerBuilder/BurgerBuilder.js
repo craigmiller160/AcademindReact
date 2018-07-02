@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-
-const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
-};
+import { findIngredient } from '../../model/ingredient/BurgerIngredients';
 
 class BurgerBuilder extends Component {
 
@@ -23,10 +17,12 @@ class BurgerBuilder extends Component {
     };
 
     addIngredientHandler = type => {
+        const ingredient = findIngredient(type);
+
         this.setState(prevState => {
             const newIngredients = {...prevState.ingredients};
             newIngredients[type] += 1;
-            const newTotal = prevState.totalPrice + INGREDIENT_PRICES[type];
+            const newTotal = prevState.totalPrice + ingredient.price;
             return {
                 ingredients: newIngredients,
                 totalPrice: newTotal
@@ -35,12 +31,14 @@ class BurgerBuilder extends Component {
     };
 
     removeIngredientHandler = type => {
+        const ingredient = findIngredient(type);
+
         this.setState(prevState => {
             const newIngredients = {...prevState.ingredients};
             if (newIngredients[type] > 0) {
                 newIngredients[type] -= 1;
             }
-            const newTotal = prevState.totalPrice - INGREDIENT_PRICES[type];
+            const newTotal = prevState.totalPrice - ingredient.price;
             return {
                 ingredients: newIngredients,
                 totalPrice: newTotal
