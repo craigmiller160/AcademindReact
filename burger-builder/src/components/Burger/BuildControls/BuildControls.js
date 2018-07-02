@@ -18,7 +18,9 @@ const BuildControls = props => {
         <div className={classes.BuildControls}>
             <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
             {controlElems}
-            <button className={classes.OrderButton}>ORDER NOW</button>
+            <button
+                className={classes.OrderButton}
+                disabled={!props.purchasable}>ORDER NOW</button>
         </div>
     );
 };
@@ -32,7 +34,8 @@ BuildControls.propTypes = {
         cheese: PropTypes.bool.isRequired,
         bacon: PropTypes.bool.isRequired
     }).isRequired,
-    price: PropTypes.number.isRequired
+    price: PropTypes.number.isRequired,
+    purchasable: PropTypes.bool.isRequired
 };
 
 export default BuildControls;
