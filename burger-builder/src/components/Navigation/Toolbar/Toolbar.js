@@ -1,17 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Toolbar.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import burgerNavItems from '../../../model/navigation/BurgerNavItems';
+import NavItem from '../../../model/navigation/NavItem';
 
 const Toolbar = props => (
     <header className={classes.Toolbar}>
         <div>MENU</div>
         <Logo />
         <nav>
-            <NavigationItems items={burgerNavItems} />
+            <NavigationItems items={props.items} />
         </nav>
     </header>
 );
+
+Toolbar.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.instanceOf(NavItem)).isRequired
+};
 
 export default Toolbar;
