@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Aux from '../../../hoc/Aux';
 import { ingredientsPropType } from '../../../model/ingredient/BurgerIngredients';
+import Button from '../../UI/Button/Button';
 
 const OrderSummary = props => {
     const style = {
@@ -19,12 +21,16 @@ const OrderSummary = props => {
                 {ingredientSummary}
             </ul>
             <p>Continue to checkout?</p>
+            <Button clicked={props.cancel} btnType="Danger">CANCEL</Button>
+            <Button clicked={props.continue} btnType="Success">CONTINUE</Button>
         </Aux>
     )
 };
 
 OrderSummary.propTypes = {
-    ingredients: ingredientsPropType
+    ingredients: ingredientsPropType,
+    cancel: PropTypes.func.isRequired,
+    'continue': PropTypes.func.isRequired
 };
 
 export default OrderSummary;
