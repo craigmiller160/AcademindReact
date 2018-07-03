@@ -24,7 +24,7 @@ const OrderSummary = props => {
             <Button clicked={props.cancel} btnType="Danger">CANCEL</Button>
             <Button clicked={props.continue} btnType="Success">CONTINUE</Button>
         </Aux>
-    )
+    );
 };
 
 OrderSummary.propTypes = {
