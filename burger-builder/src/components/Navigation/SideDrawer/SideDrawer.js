@@ -4,24 +4,37 @@ import classes from './SideDrawer.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import NavItem from '../../../model/navigation/NavItem';
+import Aux from '../../../hoc/Aux';
+import Backdrop from '../../UI/Backdrop/Backdrop';
 
 const SideDrawer = props => {
-
+    const attachedClasses = [classes.SideDrawer];
+    if (props.open) {
+        attachedClasses.push(classes.Open);
+    }
+    else {
+        attachedClasses.push(classes.Close);
+    }
 
     return (
-        <div className={classes.SideDrawer}>
-            <div className={classes.Logo}>
-                <Logo />
+        <Aux>
+            <Backdrop show={props.open} clicked={props.closed} />
+            <div className={attachedClasses.join(' ')}>
+                <div className={classes.Logo}>
+                    <Logo />
+                </div>
+                <nav>
+                    <NavigationItems items={props.items}/>
+                </nav>
             </div>
-            <nav>
-                <NavigationItems items={props.items}/>
-            </nav>
-        </div>
+        </Aux>
     );
 };
 
 SideDrawer.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.instanceOf(NavItem)).isRequired
+    items: PropTypes.arrayOf(PropTypes.instanceOf(NavItem)).isRequired,
+    closed: PropTypes.func,
+    open: PropTypes.bool.isRequired
 };
 
 export default SideDrawer;
