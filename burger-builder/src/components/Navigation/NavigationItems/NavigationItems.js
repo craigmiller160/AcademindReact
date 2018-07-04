@@ -7,6 +7,7 @@ import NavItem from '../../../model/navigation/NavItem';
 const NavigationItems = props => {
     const items = props.items.map((item, index) => (
         <NavigationItem
+            key={item.label}
             link={item.link}
             active={index === 0}>
             {item.label}
