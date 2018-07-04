@@ -15,10 +15,16 @@ class Layout extends Component {
         this.setState({showSideDrawer: false});
     };
 
+    sideDrawerOpenHandler = () => {
+        this.setState({showSideDrawer: true});
+    };
+
     render() {
         return (
             <Aux>
-                <Toolbar items={burgerNavItems} />
+                <Toolbar
+                    items={burgerNavItems}
+                    toggleSideBar={this.sideDrawerOpenHandler} />
                 <SideDrawer
                     items={burgerNavItems}
                     open={this.state.showSideDrawer}
