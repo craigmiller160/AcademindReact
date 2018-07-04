@@ -12,7 +12,7 @@ class NewPost extends Component {
     postDataHandler = async () => {
         try {
             const post = {...this.state};
-            const res = await axios.post('https://jsonplaceholder.typicode.com/posts', post);
+            const res = await axios.post('/posts', post);
             console.log(res);
         }
         catch (ex) {

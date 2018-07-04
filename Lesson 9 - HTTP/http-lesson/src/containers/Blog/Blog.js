@@ -15,7 +15,7 @@ class Blog extends Component {
 
     async componentDidMount() {
         try {
-            const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
+            const res = await axios.get('/posts');
             const posts = res.data.slice(0, 4).map(post => ({
                 ...post,
                 author: 'Max'
