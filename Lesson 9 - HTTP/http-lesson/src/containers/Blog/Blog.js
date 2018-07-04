@@ -16,12 +16,11 @@ class Blog extends Component {
     async componentDidMount() {
         try {
             const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-            const posts = res.data.slice(0, 4);
-            const updatedPosts = posts.map(post => ({
+            const posts = res.data.slice(0, 4).map(post => ({
                 ...post,
                 author: 'Max'
             }));
-            this.setState({posts: updatedPosts});
+            this.setState({posts: posts});
         }
         catch (ex) {
             console.log(ex);
