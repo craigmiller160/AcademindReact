@@ -4,11 +4,11 @@ import classes from './Toolbar.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import NavItem from '../../../model/navigation/NavItem';
-import SideDrawerToggle from './SideBarToggle/SideDrawerToggle';
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 
 const Toolbar = props => (
     <header className={classes.Toolbar}>
-        <SideDrawerToggle click={props.toggleSideBar} />
+        <DrawerToggle click={props.toggleSideDrawer} />
         <div className={classes.Logo}>
             <Logo />
         </div>
@@ -20,7 +20,7 @@ const Toolbar = props => (
 
 Toolbar.propTypes = {
     items: PropTypes.arrayOf(PropTypes.instanceOf(NavItem)).isRequired,
-    toggleSideBar: PropTypes.func
+    toggleSideDrawer: PropTypes.func
 };
 
 export default Toolbar;
