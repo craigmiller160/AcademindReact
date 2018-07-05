@@ -11,6 +11,8 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class BurgerBuilder extends Component {
 
+    //TODO in the future, look into splitting this component up
+
     state = {
         ingredients: null,
         totalPrice: 4,
