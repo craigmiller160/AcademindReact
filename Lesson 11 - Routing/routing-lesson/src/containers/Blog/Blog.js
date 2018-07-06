@@ -12,7 +12,7 @@ class Blog extends Component {
         posts: [],
         selectedPostId: null,
         error: false
-    }
+    };
 
     componentDidMount () {
         axios.get( '/posts' )
@@ -35,7 +35,7 @@ class Blog extends Component {
 
     postSelectedHandler = (id) => {
         this.setState({selectedPostId: id});
-    }
+    };
 
     render () {
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
@@ -50,7 +50,19 @@ class Blog extends Component {
         }
 
         return (
-            <div>
+            <div className="Blog">
+                <header>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/new-post">New Post</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
                 <section className="Posts">
                     {posts}
                 </section>
