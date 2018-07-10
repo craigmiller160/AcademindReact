@@ -7,11 +7,15 @@ import Posts from '../Posts/Posts';
 class Blog extends Component {
 
     state = {
-        selectedPostId: null,
-        error: false
+        auth: false
     };
 
     render () {
+        let newPostRoute = null;
+        if (this.state.auth) {
+            newPostRoute = <Route path="/new-post" component={NewPost} />;
+        }
+
         return (
             <div className="Blog">
                 <header>
@@ -38,9 +42,9 @@ class Blog extends Component {
                     </nav>
                 </header>
                 <Switch>
-                    <Redirect from="/" to="/posts" exact />
                     <Route path="/posts" component={Posts} />
-                    <Route path="/new-post" component={NewPost} />
+                    {newPostRoute}
+                    <Redirect from="/" to="/posts" />
                 </Switch>
             </div>
         );
