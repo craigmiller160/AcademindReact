@@ -1,0 +1,11 @@
+
+.Navbar > ul > li {
+    display: inline-block;
+    text-align: center;
+    list-style: none;
+    margin: 10px;
+}
+
+.Navbar {
+    border-bottom: 1px solid black;
+}
