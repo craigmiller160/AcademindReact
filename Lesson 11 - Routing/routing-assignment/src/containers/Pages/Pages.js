@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import { Route, Switch } from 'react-router-dom';
 import Users from '../Users/Users';
 import Courses from '../Courses/Courses';
+import Course from '../Course/Course';
 
 class Pages extends Component {
 
@@ -14,7 +15,8 @@ class Pages extends Component {
                 <Switch>
                     <Route path="/" component={Home} exact />
                     <Route path="/users" component={Users} />
-                    <Route path="/courses" component={Courses} />
+                    <Route path="/courses" component={Courses} exact />
+                    <Route path="/courses/:id" component={Course} />
                 </Switch>
             </div>
         )
