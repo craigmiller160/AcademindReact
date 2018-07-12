@@ -32,4 +32,4 @@ Burger.propTypes = {
     ingredients: ingredientsPropType
 };
 
-export default Burger
+export default Burger;
