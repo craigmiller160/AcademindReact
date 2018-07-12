@@ -22,7 +22,7 @@ class Checkout extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{width: '100%'}}>
                 <CheckoutSummary ingredients={this.state.ingredients} />
             </div>
         );
