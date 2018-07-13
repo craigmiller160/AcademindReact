@@ -8,6 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axiosOrders from '../../http/axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import queryString from 'query-string';
 
 class BurgerBuilder extends Component {
 
@@ -80,7 +81,11 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // this.setState({loading: true}, this.addNewPurchase);
-        this.props.history.push('/checkout');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: `?${queryString.stringify(this.state.ingredients)}`
+        });
     };
 
     async addNewPurchase() {

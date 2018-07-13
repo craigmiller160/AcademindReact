@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import queryString from 'query-string';
 
 class Checkout extends Component {
 
     state = {
         ingredients: {
-            salad:1,
-            meat: 1,
-            cheese: 1,
-            bacon: 1
+            salad: 0,
+            meat: 0,
+            cheese: 0,
+            bacon: 0
         }
     };
+
+    componentDidMount() {
+        const ingredients = queryString.parse(this.props.location.search);
+        Object.keys(ingredients).forEach(key => ingredients[key] = parseInt(ingredients[key], 0));
+
+        this.setState({ingredients});
+    }
 
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
