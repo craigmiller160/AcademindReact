@@ -12,14 +12,21 @@ class Checkout extends Component {
             meat: 0,
             cheese: 0,
             bacon: 0
-        }
+        },
+        totalPrice: 0
     };
 
-    componentDidMount() {
-        const ingredients = queryString.parse(this.props.location.search);
-        Object.keys(ingredients).forEach(key => ingredients[key] = parseInt(ingredients[key], 0));
+    componentWillMount() {
+        const queryObj = queryString.parse(this.props.location.search);
+        const totalPrice = parseInt(queryObj.totalPrice, 0);
+        const ingredients = {};
+        Object.keys(queryObj).forEach(key => {
+            if (key !== 'totalPrice') {
+                ingredients[key] = parseInt(queryObj[key], 0);
+            }
+        });
 
-        this.setState({ingredients});
+        this.setState({ingredients, totalPrice});
     }
 
     checkoutCancelledHandler = () => {
@@ -40,7 +47,13 @@ class Checkout extends Component {
                     ingredients={this.state.ingredients}
                     checkoutCancelled={this.checkoutCancelledHandler}
                     checkoutContinued={this.checkoutContinuedHandler} />
-                <Route path={`${this.props.match.url}/contact-data`} component={ContactData} />
+                <Route
+                    path={`${this.props.match.url}/contact-data`}
+                    render={() => (
+                        <ContactData
+                            ingredients={this.state.ingredients}
+                            totalPrice={this.state.totalPrice}/>
+                    )} />
             </div>
         );
     }
