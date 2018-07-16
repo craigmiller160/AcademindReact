@@ -1,0 +1,18 @@
+
+.Buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.Buttons .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.Buttons .row div {
+    border: 1px solid blue;
+    width: 100%;
+}
