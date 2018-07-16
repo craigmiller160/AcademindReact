@@ -9,7 +9,7 @@ class App extends Component<{},{}> {
     };
 
     public buttonClickHandler = (type: string): void => {
-        console.log('Clicked'); // TODO delete this
+        console.log('Clicked: ' + type); // TODO delete this
     };
 
     public render(): ReactNode {
