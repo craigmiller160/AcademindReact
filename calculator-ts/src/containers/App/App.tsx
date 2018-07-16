@@ -3,6 +3,7 @@ import classes from './App.css';
 import Buttons from '../../components/Buttons/Buttons';
 import Display from '../../components/Display/Display';
 import IAppState from './IAppState';
+import calculate from '../../util/calculate';
 
 class App extends Component<{},IAppState> {
 
@@ -12,25 +13,32 @@ class App extends Component<{},IAppState> {
 
     public buttonClickHandler = (type: string): void => {
         this.setState(prevState => {
-            let newValue = '';
-            switch (type) {
-                case '+':
-                case '-':
-                case '*':
-                case '/':
-                    newValue = `${prevState.displayValue} ${type} `;
-                    break;
-                case '=':
-                    break;
-                case 'Clear':
-                    newValue = '';
-                    break;
-                default:
-                    newValue = `${prevState.displayValue}${type}`;
-                    break;
-            }
+            try {
+                let newValue = '';
+                switch (type) {
+                    case '+':
+                    case '-':
+                    case '*':
+                    case '/':
+                        newValue = `${prevState.displayValue} ${type} `;
+                        break;
+                    case '=':
+                        newValue = calculate(prevState.displayValue);
+                        break;
+                    case 'Clear':
+                        newValue = '';
+                        break;
+                    default:
+                        newValue = `${prevState.displayValue}${type}`;
+                        break;
+                }
 
-            return {displayValue: newValue};
+                return {displayValue: newValue};
+            }
+            catch (ex) {
+                alert(ex.message);
+            }
+            return null;
         });
     };
 
