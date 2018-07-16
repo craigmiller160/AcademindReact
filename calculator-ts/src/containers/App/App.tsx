@@ -8,7 +8,7 @@ class App extends Component<{},{}> {
 
     };
 
-    buttonClickHandler = (type: string): void => {
+    public buttonClickHandler = (type: string): void => {
         console.log('Clicked'); // TODO delete this
     };
 

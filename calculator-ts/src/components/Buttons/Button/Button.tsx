@@ -7,7 +7,7 @@ const Button: SFC<IButtonProps> = props => {
         <div
             className={classes.Button}
             onClick={props.action}>
-            {props.type}
+            <p>{props.type}</p>
         </div>
     );
 };
