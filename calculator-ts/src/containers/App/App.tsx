@@ -42,7 +42,7 @@ class App extends Component<{},IAppState> {
                 }
 
                 if (type === '=' && newValue !== '0' && newValue !== oldValue) {
-                    history.push(oldValue);
+                    history.push(`${oldValue} = ${newValue}`);
                 }
 
                 return {displayValue: newValue, history};

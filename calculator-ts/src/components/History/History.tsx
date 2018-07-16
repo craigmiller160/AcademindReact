@@ -3,7 +3,7 @@ import classes from './History.css';
 import IHistoryProps from './IHistoryProps';
 
 const History: SFC<IHistoryProps> = props => {
-    const history = props.history.reverse();
+    const history = props.history.slice().reverse();
     return (
         <div className={classes.History}>
             <h3>History</h3>
