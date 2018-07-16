@@ -1,0 +1,10 @@
+
+.Display {
+    height: 80px;
+    font-size: 25px;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 3px;
+    display: flex;
+    flex-wrap: wrap;
+}
