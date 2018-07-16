@@ -4,11 +4,13 @@ import Buttons from '../../components/Buttons/Buttons';
 import Display from '../../components/Display/Display';
 import IAppState from './IAppState';
 import calculate from '../../util/calculate';
+import History from '../../components/History/History';
 
 class App extends Component<{},IAppState> {
 
     public state = {
-        displayValue: '0'
+        displayValue: '0',
+        history: []
     };
 
     public buttonClickHandler = (type: string): void => {
@@ -53,6 +55,8 @@ class App extends Component<{},IAppState> {
                 <Display value={this.state.displayValue}/>
                 <hr />
                 <Buttons action={this.buttonClickHandler} />
+                <hr />
+                <History history={this.state.history} />
             </div>
         );
     }
