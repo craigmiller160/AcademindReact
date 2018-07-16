@@ -14,7 +14,6 @@ const doCalc = (num1: number, num2: number, operator: string): number => {
     }
 };
 
-
 const calculate = (value: string): string => {
     let parts = value.trim().split(' ');
     if (parts.length === 1) {
