@@ -1,4 +1,12 @@
 
 .Buttons {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Buttons .row {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: space-around;*/
 }
