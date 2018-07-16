@@ -28,7 +28,7 @@ const calculate = (value: string): string => {
 
         const num1 = Number(parts[start]);
         const num2 = Number(parts[start + 2]);
-        if (num1 === Number.NaN || num2 === Number.NaN) {
+        if (isNaN(num1) || isNaN(num2)) {
             throw new Error('Invalid input');
         }
 
