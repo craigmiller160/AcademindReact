@@ -1,6 +1,16 @@
 
 .History {
-    width: 100%;
     border: 1px solid black;
+    height: 100px;
+    margin: 0 3px 3px 3px;
+    box-sizing: border-box;
+}
 
+.list {
+    height: 80px;
+    overflow-y: scroll;
+}
+
+.History h3 {
+    margin: 0;
 }

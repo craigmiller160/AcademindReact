@@ -16,6 +16,7 @@ class App extends Component<{},IAppState> {
     public buttonClickHandler = (type: string): void => {
         this.setState(prevState => {
             try {
+                const history = prevState.history.slice();
                 const oldValue = prevState.displayValue === '0' ? '' : prevState.displayValue;
                 let newValue = '';
                 switch (type) {
@@ -40,7 +41,11 @@ class App extends Component<{},IAppState> {
                     newValue = '0';
                 }
 
-                return {displayValue: newValue};
+                if (type === '=' && newValue !== '0' && newValue !== oldValue) {
+                    history.push(oldValue);
+                }
+
+                return {displayValue: newValue, history};
             }
             catch (ex) {
                 alert(ex.message);

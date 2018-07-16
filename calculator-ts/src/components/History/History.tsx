@@ -5,7 +5,10 @@ import IHistoryProps from './IHistoryProps';
 const History: SFC<IHistoryProps> = props => {
     return (
         <div className={classes.History}>
-            {props.history.map(item => <p>{item}</p>)}
+            <h3>History</h3>
+            <div className={classes.list}>
+                {props.history.map((item, index) => <p key={index}>{item}</p>)}
+            </div>
         </div>
     );
 };
