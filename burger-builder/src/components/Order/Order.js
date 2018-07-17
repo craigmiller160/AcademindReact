@@ -5,15 +5,11 @@ import { ingredientsPropType } from '../../model/ingredient/BurgerIngredients';
 
 const Order = props => {
     const ingredients = Object.keys(props.ingredients)
-        .map(key => ({
-            name: key,
-            amount: props.ingredients[key]
-        }))
-        .map(ingredient => (
+        .map(key => (
             <span
-                key={ingredient.name}
+                key={key}
                 className={classes.ingredient}>
-                {ingredient.name} ({ingredient.amount})
+                {key} ({props.ingredients[key]})
             </span>
         ));
 
