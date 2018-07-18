@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classes from './ContactData.css';
 import Button from '../../../components/UI/Button/Button';
-import Input from '../../../components/UI/Form/Input/Input';
 import { ingredientsPropType } from '../../../model/ingredient/BurgerIngredients';
 import axiosOrders from '../../../http/axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { withRouter } from 'react-router-dom';
+import Input from '../../../components/UI/Form/Input/Input';
 
 class ContactData extends Component {
 
@@ -56,10 +56,10 @@ class ContactData extends Component {
     render() {
         let form = (
             <form>
-                <Input label="Name" type="text" name="name" placeholder="Your name" />
-                <Input label="Email" type="email" name="email" placeholder="Your email" />
-                <Input label="Street" type="text" name="street" placeholder="Your street" />
-                <Input label="Postal Code" type="text" name="postalCode" placeholder="Your postal code" />
+                <Input inputType="input" label="Name" type="text" name="name" placeholder="Your name" />
+                <Input inputType="input" label="Email" type="email" name="email" placeholder="Your email" />
+                <Input inputType="input" label="Street" type="text" name="street" placeholder="Your street" />
+                <Input inputType="input" label="Postal Code" type="text" name="postalCode" placeholder="Your postal code" />
                 <Button btnType="Success" clicked={this.orderBurgerHandler}>ORDER</Button>
             </form>
         );

@@ -1,48 +1,32 @@
-import React, { Component } from 'react';
-import classes from './Input.css';
+import React from 'react';
 import PropTypes from 'prop-types';
-import nextId from '../../../../util/nextId';
+import classes from './Input.css';
 
-class Input extends Component {
+const Input = props => {
+    const domProps = {...props};
+    delete domProps.inputType;
 
-    state = {
-        id: 0
-    };
-
-    componentDidMount() {
-        this.setState({id: nextId()});
+    let inputElement = null;
+    switch (props.inputType) {
+        case 'textarea':
+            inputElement = <textarea className={classes.InputElement} {...domProps} />;
+            break;
+        case 'input':
+        default:
+            inputElement = <input className={classes.InputElement} {...domProps} />;
+            break;
     }
 
-    render() {
-        return (
-            <div className={classes.Input}>
-                <label htmlFor={this.state.id}>{this.props.label}: </label>
-                <input
-                    id={this.state.id}
-                    className={this.props.className}
-                    type={this.props.type}
-                    name={this.props.name}
-                    placeholder={this.props.placeholder}
-                    value={this.props.value}
-                    onChange={this.props.change} />
-            </div>
-        );
-    }
-
-}
-
-Input.propTypes = {
-    type: PropTypes.string,
-    name: PropTypes.string,
-    label: PropTypes.string.isRequired,
-    placeholder: PropTypes.string,
-    value: PropTypes.any,
-    change: PropTypes.func,
-    className: PropTypes.string
+    return (
+        <div className={classes.Input}>
+            <label className={classes.Label}>{props.label}</label>
+            {inputElement}
+        </div>
+    );
 };
 
-Input.defaultProps = {
-    type: 'text'
+Input.propTypes = {
+    inputType: PropTypes.string.isRequired
 };
 
 export default Input;
