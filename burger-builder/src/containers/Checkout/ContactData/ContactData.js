@@ -66,7 +66,7 @@ class ContactData extends Component {
                         }
                     ]
                 },
-                value: ''
+                value: 'fastest'
             }
         },
         loading: false
@@ -81,27 +81,23 @@ class ContactData extends Component {
         });
     };
 
-    orderBurgerHandler = async event => {
+    orderBurgerHandler = event => {
         event.preventDefault();
         this.setState({loading: true}, this.addNewPurchase);
     };
 
     async addNewPurchase() {
         try {
+            const formData = {};
+            Object.entries(this.state.orderForm)
+                .forEach(entry => formData[entry[0]] = entry[1].value);
+
             const order = {
                 ingredients: this.props.ingredients,
                 price: this.props.totalPrice,
-                customer: {
-                    name: 'Craig Miller',
-                    address: {
-                        street: 'Test street 1',
-                        zipCode: '41351',
-                        country: 'USA'
-                    },
-                    email: 'test@test.com'
-                },
-                deliveryMethod: 'fastest'
+                orderData: formData
             };
+
             const res = await axiosOrders.post('/orders.json', order);
             console.log(res);
         }
@@ -126,7 +122,7 @@ class ContactData extends Component {
             ));
 
         let form = (
-            <form>
+            <form onSubmit={this.orderBurgerHandler}>
                 {formInputs}
                 <Button btnType="Success" clicked={this.orderBurgerHandler}>ORDER</Button>
             </form>
