@@ -1,10 +1,13 @@
 import * as inputTypes from './InputTypes';
 
 export default class FormInput {
-    constructor(elementType, elementName, elementConfig) {
+    constructor(elementType, elementName, elementConfig, validation) {
         this.elementType = elementType;
         this.elementName = elementName;
         this.elementConfig = elementConfig;
+        this.validation = validation;
+        //Make valid true by default if there is no validation. Make it false by default if there is validation
+        this.valid = validation === undefined || validation === null;
         switch (elementType) {
             case inputTypes.CHECK:
             case inputTypes.RADIO:

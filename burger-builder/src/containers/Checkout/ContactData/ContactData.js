@@ -18,22 +18,34 @@ class ContactData extends Component {
             new FormInput(inputTypes.TEXT, 'name', {
                 label: 'Name',
                 placeholder: 'Your name'
+            }, {
+                required: true
             }),
             new FormInput(inputTypes.TEXT, 'street', {
                 label: 'Street',
                 placeholder: 'Your street'
+            }, {
+                required: true
             }),
             new FormInput(inputTypes.TEXT, 'zipCode', {
                 label: 'Zip Code',
                 placeholder: 'Your zip code'
+            }, {
+                required: true,
+                minLength: 5,
+                maxLength: 5
             }),
             new FormInput(inputTypes.TEXT, 'country', {
                 label: 'Country',
                 placeholder: 'Your country'
+            }, {
+                required: true
             }),
             new FormInput(inputTypes.EMAIL, 'email', {
                 label: 'Email',
                 placeholder: 'Your email'
+            }, {
+                required: true
             }),
             new FormInput(inputTypes.SELECT, 'deliveryMethod', {
                 label: 'Delivery Method',
@@ -53,13 +65,42 @@ class ContactData extends Component {
             const orderForm = JSON.parse(JSON.stringify(prevState.orderForm));
             const index = orderForm.findIndex(formInput => formInput.elementName === name);
             orderForm[index].value = value;
+            orderForm[index].valid = this.checkValidity(value, orderForm[index].validation);
             return {orderForm};
         });
     };
 
+    checkValidity(value, rules) {
+        let isValid = true;
+
+        if (rules && rules.required) {
+            isValid = !!value && (value.trim ? !!value.trim() : true);
+        }
+
+        if (isValid && rules && rules.minLength) {
+            isValid = value.length >= rules.minLength;
+        }
+
+        if (isValid && rules && rules.maxLength) {
+            isValid = value.length <= rules.maxLength;
+        }
+
+        return isValid;
+    }
+
     orderBurgerHandler = event => {
         event.preventDefault();
-        this.setState({loading: true}, this.addNewPurchase);
+        let isValid = true;
+        for (let i = 0; i < this.state.orderForm.length; i++) {
+            if (!this.state.orderForm[i].valid) {
+                isValid = false;
+                break;
+            }
+        }
+
+        if (isValid) {
+            this.setState({loading: true}, this.addNewPurchase);
+        }
     };
 
     async addNewPurchase() {
