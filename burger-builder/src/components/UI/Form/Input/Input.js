@@ -15,13 +15,18 @@ class Input extends Component {
     }
 
     render() {
+        const inputClasses = [classes.InputElement];
+        if (this.props.invalid) {
+            inputClasses.push(classes.Invalid);
+        }
+
         let inputElement = null;
         switch (this.props.elementType) {
             case inputTypes.TEXTAREA:
                 inputElement =
                     <textarea
                         id={this.state.id}
-                        className={classes.InputElement}
+                        className={inputClasses.join(' ')}
                         name={this.props.elementName}
                         {...this.props.elementConfig}
                         value={this.props.value}
@@ -31,7 +36,7 @@ class Input extends Component {
                 inputElement = (
                     <select
                         id={this.state.id}
-                        className={classes.InputElement}
+                        className={inputClasses.join(' ')}
                         name={this.props.elementName}
                         value={this.props.value}
                         {...this.props.elementConfig}
@@ -56,7 +61,7 @@ class Input extends Component {
                     <input
                         id={this.state.id}
                         type={this.props.elementType}
-                        className={classes.InputElement}
+                        className={inputClasses.join(' ')}
                         name={this.props.elementName}
                         {...this.props.elementConfig}
                         value={this.props.value}
@@ -81,7 +86,8 @@ Input.propTypes = {
     elementName: PropTypes.string.isRequired,
     elementConfig: PropTypes.object,
     value: PropTypes.any,
-    change: PropTypes.func
+    change: PropTypes.func,
+    invalid: PropTypes.bool
 };
 
 export default Input;

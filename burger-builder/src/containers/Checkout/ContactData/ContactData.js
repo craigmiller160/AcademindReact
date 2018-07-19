@@ -136,6 +136,7 @@ class ContactData extends Component {
                     elementName={formInput.elementName}
                     elementConfig={formInput.elementConfig}
                     value={formInput.value}
+                    invalid={!formInput.valid}
                     change={this.formInputChangeHandler} />
             ));
 
