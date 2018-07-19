@@ -22,8 +22,10 @@ class Input extends Component {
 
     render() {
         const inputClasses = [classes.InputElement];
+        let validationError = null;
         if (this.props.invalid && this.state.touched) {
             inputClasses.push(classes.Invalid);
+            validationError = <p className={classes.ValidationError}>Please enter a valid value!</p>;
         }
 
         let inputElement = null;
@@ -81,6 +83,7 @@ class Input extends Component {
             <div className={classes.Input}>
                 <label htmlFor={this.state.id} className={classes.Label}>{this.props.elementConfig.label}</label>
                 {inputElement}
+                {validationError}
             </div>
         );
     }
