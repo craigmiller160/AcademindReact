@@ -68,7 +68,7 @@ class Input extends Component {
 
         return (
             <div className={classes.Input}>
-                <label htmlFor={this.state.id} className={classes.Label}>{this.props.label}</label>
+                <label htmlFor={this.state.id} className={classes.Label}>{this.props.elementConfig.label}</label>
                 {inputElement}
             </div>
         );
