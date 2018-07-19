@@ -7,16 +7,22 @@ import nextId from '../../../../util/nextId';
 class Input extends Component {
 
     state = {
-        id: 0
+        id: 0,
+        touched: false
     };
 
     componentDidMount() {
         this.setState({id: nextId()});
     }
 
+    inputChangeHandler = event => {
+        this.setState({touched: true});
+        this.props.change(event);
+    };
+
     render() {
         const inputClasses = [classes.InputElement];
-        if (this.props.invalid) {
+        if (this.props.invalid && this.state.touched) {
             inputClasses.push(classes.Invalid);
         }
 
@@ -30,7 +36,7 @@ class Input extends Component {
                         name={this.props.elementName}
                         {...this.props.elementConfig}
                         value={this.props.value}
-                        onChange={this.props.change} />;
+                        onChange={this.inputChangeHandler} />;
                 break;
             case inputTypes.SELECT:
                 inputElement = (
@@ -40,7 +46,7 @@ class Input extends Component {
                         name={this.props.elementName}
                         value={this.props.value}
                         {...this.props.elementConfig}
-                        onChange={this.props.change}>
+                        onChange={this.inputChangeHandler}>
                         {this.props.elementConfig.options.map(option => (
                             <option
                                 key={option.value}
@@ -65,7 +71,7 @@ class Input extends Component {
                         name={this.props.elementName}
                         {...this.props.elementConfig}
                         value={this.props.value}
-                        onChange={this.props.change} />;
+                        onChange={this.inputChangeHandler} />;
                 break;
             default:
                 throw new Error(`Invalid elementType: ${this.props.elementType}`);

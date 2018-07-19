@@ -18,7 +18,7 @@ export default class FormInput {
                 break;
             case inputTypes.SELECT:
                 if (elementConfig && elementConfig.options && elementConfig.options.length > 0) {
-                    this.value = elementConfig.options[0];
+                    this.value = elementConfig.options[0].value;
                 }
                 else {
                     this.value = '';
