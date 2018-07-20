@@ -9,28 +9,28 @@ class Counter extends Component {
         counter: 0
     };
 
-    counterChangedHandler = ( action, value ) => {
-        switch ( action ) {
-            case 'inc':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + 1 } } )
-                break;
-            case 'dec':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - 1 } } )
-                break;
-            case 'add':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + value } } )
-                break;
-            case 'sub':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
-                break;
-        }
-    };
+    // counterChangedHandler = ( action, value ) => {
+    //     switch ( action ) {
+    //         case 'inc':
+    //             this.setState( ( prevState ) => { return { counter: prevState.counter + 1 } } )
+    //             break;
+    //         case 'dec':
+    //             this.setState( ( prevState ) => { return { counter: prevState.counter - 1 } } )
+    //             break;
+    //         case 'add':
+    //             this.setState( ( prevState ) => { return { counter: prevState.counter + value } } )
+    //             break;
+    //         case 'sub':
+    //             this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
+    //             break;
+    //     }
+    // };
 
 
 
     render () {
         const resultElems = this.props.results.map((result, index) => (
-            <li key={index} onClick={() => this.props.onDeleteResult(index)}>{result}</li>
+            <li key={result.id} onClick={() => this.props.onDeleteResult(result.id)}>{result.value}</li>
         ));
 
         return (
@@ -64,7 +64,7 @@ const mapDispatchToProps = dispatch => {
         onAddCounter: value => dispatch({type: actions.ADD_COUNTER, value}),
         onSubtractCounter: value => dispatch({type: actions.SUB_COUNTER, value}),
         onStoreResult: () => dispatch({type: actions.STORE_RESULT}),
-        onDeleteResult: index => dispatch({type: actions.DELETE_RESULT, value: index})
+        onDeleteResult: id => dispatch({type: actions.DELETE_RESULT, value: id})
     }
 };
 
