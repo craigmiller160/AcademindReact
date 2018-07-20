@@ -1,27 +1,44 @@
 import * as actions from './actions';
 
 const initialState = {
-    counter: 0
+    counter: 0,
+    results: []
 };
 
 const reducer = (state = initialState, action) => {
-    const newState = {...state};
     switch (action.type) {
         case actions.INC_COUNTER:
-            newState.counter++;
-            break;
+            return {
+                ...state,
+                counter: state.counter + 1
+            };
         case actions.ADD_COUNTER:
-            newState.counter += action.value;
-            break;
+            return {
+                ...state,
+                counter: state.counter + action.value
+            };
         case actions.DEC_COUNTER:
-            newState.counter--;
-            break;
+            return {
+                ...state,
+                counter: state.counter - 1
+            };
         case actions.SUB_COUNTER:
-            newState.counter -= action.value;
-            break;
+            return {
+                ...state,
+                counter: state.counter - action.value
+            };
+        case actions.STORE_RESULT:
+            return {
+                ...state,
+                results: state.results.concat(state.counter)
+            };
+        case actions.DELETE_RESULT:
+            return {
+                ...state
+            };
+        default:
+            return state;
     }
-
-    return newState;
 };
 
 export default reducer;
