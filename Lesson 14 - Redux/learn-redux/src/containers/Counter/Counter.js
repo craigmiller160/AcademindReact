@@ -35,7 +35,7 @@ const mapStateToProps = state => {
     return {
         ctr: state.counter.counter,
         results: state.results.results
-    };
+    }
 };
 
 const mapDispatchToProps = dispatch => {
