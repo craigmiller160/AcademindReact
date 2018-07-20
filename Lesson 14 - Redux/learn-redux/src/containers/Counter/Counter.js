@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
+import * as actions from '../../store/actions';
 
 class Counter extends Component {
     state = {
         counter: 0
-    }
+    };
 
     counterChangedHandler = ( action, value ) => {
         switch ( action ) {
@@ -23,19 +24,36 @@ class Counter extends Component {
                 this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
                 break;
         }
-    }
+    };
+
+
 
     render () {
         return (
             <div>
-                <CounterOutput value={this.state.counter} />
-                <CounterControl label="Increment" clicked={() => this.counterChangedHandler( 'inc' )} />
-                <CounterControl label="Decrement" clicked={() => this.counterChangedHandler( 'dec' )}  />
-                <CounterControl label="Add 5" clicked={() => this.counterChangedHandler( 'add', 5 )}  />
-                <CounterControl label="Subtract 5" clicked={() => this.counterChangedHandler( 'sub', 5 )}  />
+                <CounterOutput value={this.props.ctr} />
+                <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
+                <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
+                <CounterControl label="Add 5" clicked={() => this.props.onAddCounter(5)}  />
+                <CounterControl label="Subtract 5" clicked={() => this.props.onSubtractCounter(5)}  />
             </div>
         );
     }
 }
 
-export default Counter;
+const mapStateToProps = state => {
+    return {
+        ctr: state.counter
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onIncrementCounter: () => dispatch({type: actions.INC_COUNTER}),
+        onDecrementCounter: () => dispatch({type: actions.DEC_COUNTER}),
+        onAddCounter: value => dispatch({type: actions.ADD_COUNTER, value}),
+        onSubtractCounter: value => dispatch({type: actions.SUB_COUNTER, value})
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
