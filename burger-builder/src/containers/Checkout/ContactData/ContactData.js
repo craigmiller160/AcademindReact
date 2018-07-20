@@ -55,6 +55,7 @@ class ContactData extends Component {
                 ]
             })
         ],
+        formIsValid: false,
         loading: false
     };
 
@@ -66,7 +67,16 @@ class ContactData extends Component {
             const index = orderForm.findIndex(formInput => formInput.elementName === name);
             orderForm[index].value = value;
             orderForm[index].valid = this.checkValidity(value, orderForm[index].validation);
-            return {orderForm};
+
+            let formIsValid = true;
+            for (let i = 0; i < orderForm.length; i++) {
+                if (!orderForm[i].valid) {
+                    formIsValid = false;
+                    break;
+                }
+            }
+
+            return {orderForm, formIsValid};
         });
     };
 
@@ -90,15 +100,7 @@ class ContactData extends Component {
 
     orderBurgerHandler = event => {
         event.preventDefault();
-        let isValid = true;
-        for (let i = 0; i < this.state.orderForm.length; i++) {
-            if (!this.state.orderForm[i].valid) {
-                isValid = false;
-                break;
-            }
-        }
-
-        if (isValid) {
+        if (this.state.formIsValid) {
             this.setState({loading: true}, this.addNewPurchase);
         }
     };
@@ -143,7 +145,12 @@ class ContactData extends Component {
         let form = (
             <form onSubmit={this.orderBurgerHandler}>
                 {formInputs}
-                <Button btnType="Success" clicked={this.orderBurgerHandler}>ORDER</Button>
+                <Button
+                    btnType="Success"
+                    clicked={this.orderBurgerHandler}
+                    disabled={!this.state.formIsValid}>
+                    ORDER
+                </Button>
             </form>
         );
 

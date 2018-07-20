@@ -15,10 +15,22 @@
     padding-left: 0;
 }
 
-.Success {
+.Button:disabled {
+    color: gray;
+}
+
+.Success:not(:disabled) {
     color: #5C9210;
 }
 
-.Danger {
+.Success:hover:not(:disabled) {
+    color: orange;
+}
+
+.Danger:not(:disabled) {
     color: #944317;
+}
+
+.Danger:hover:not(:disabled) {
+    color: red;
 }
