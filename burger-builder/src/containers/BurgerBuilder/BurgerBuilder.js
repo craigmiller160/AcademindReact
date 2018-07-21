@@ -7,7 +7,6 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axiosOrders from '../../http/axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import queryString from 'query-string';
 import { connect } from 'react-redux';
 import * as burgerActions from '../../store/modules/burger/burgerActions';
 import { purchasable, disabledInfo } from '../../store/modules/burger/burgerSelectors';
@@ -38,12 +37,8 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinueHandler = () => {
-        const queryParams = {...this.state.ingredients}; //TODO delete this
-        queryParams.totalPrice = this.props.totalPrice;
-
         this.props.history.push({
-            pathname: '/checkout',
-            search: `?${queryString.stringify(queryParams)}`
+            pathname: '/checkout'
         });
     };
 
