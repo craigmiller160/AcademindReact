@@ -15,8 +15,8 @@ class BurgerBuilder extends Component {
     //TODO in the future, look into splitting this component up
 
     state = {
-        ingredients: null,
-        totalPrice: 4,
+        ingredients: null, //TODO this goes to redux
+        totalPrice: 4, //TODO this goes to redux
         purchasable: false,
         purchasing: false,
         loading: false

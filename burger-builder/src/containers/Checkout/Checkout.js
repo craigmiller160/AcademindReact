@@ -7,13 +7,13 @@ import ContactData from './ContactData/ContactData';
 class Checkout extends Component {
 
     state = {
-        ingredients: {
+        ingredients: { //TODO this goes to redux
             salad: 0,
             meat: 0,
             cheese: 0,
             bacon: 0
         },
-        totalPrice: 0
+        totalPrice: 0 //TODO this goes to redux
     };
 
     componentWillMount() {

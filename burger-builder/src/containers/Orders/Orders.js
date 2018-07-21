@@ -6,7 +6,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 class Orders extends Component {
 
     state = {
-        orders: [],
+        orders: [], //TODO this goes to redux but needs asynchronous code in redux
         loading: true
     };
 
