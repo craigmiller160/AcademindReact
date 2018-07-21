@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import { findIngredient } from '../../model/ingredient/BurgerIngredients';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axiosOrders from '../../http/axios-orders';
@@ -11,14 +10,11 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import * as burgerActions from '../../store/modules/burger/burgerActions';
-import { purchasable } from '../../store/modules/burger/burgerSelectors';
+import { purchasable, disabledInfo } from '../../store/modules/burger/burgerSelectors';
 
 class BurgerBuilder extends Component {
 
-    //TODO in the future, look into splitting this component up
-
     state = {
-        // purchasable: false,
         purchasing: false,
         loading: false
     };
@@ -52,9 +48,6 @@ class BurgerBuilder extends Component {
     };
 
     render() {
-        const disabledInfo = {...this.props.ingredients};
-        Object.keys(disabledInfo).forEach(key => disabledInfo[key] = disabledInfo[key] <= 0); //TODO try and see if this can be moved to redux too
-
         let modalContent = null;
         if (this.state.loading) {
             modalContent = <Spinner />;
@@ -77,7 +70,7 @@ class BurgerBuilder extends Component {
                     <BuildControls
                         ingredientAdded={this.props.addIngredient}
                         ingredientRemoved={this.props.removeIngredient}
-                        disabledInfo={disabledInfo}
+                        disabledInfo={this.props.disabledInfo}
                         price={this.props.totalPrice}
                         purchasable={this.props.purchasable}
                         ordered={this.purchaseHandler} />
@@ -97,18 +90,12 @@ class BurgerBuilder extends Component {
 
 }
 
-// const getPurchasable = state => {
-//     const sum = Object.keys(state.ingredients)
-//         .map(key => state.ingredients[key])
-//         .reduce((prev, next) => prev + next, 0);
-//     return sum > 0;
-// };
-
 const mapStateToProps = state => {
     return {
         ingredients: state.ingredients,
         totalPrice: state.totalPrice,
-        purchasable: purchasable(state)
+        purchasable: purchasable(state),
+        disabledInfo: disabledInfo(state)
     }
 };
 
