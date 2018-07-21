@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import burgerReducer from './reducers/burgerReducer';
+import burgerReducer from './modules/burger/burgerReducer';
 
 const store = createStore(burgerReducer);
 

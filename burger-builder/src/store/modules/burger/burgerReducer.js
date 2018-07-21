@@ -1,5 +1,5 @@
 import * as burgerActions from './burgerActions';
-import { findIngredient } from '../../model/ingredient/BurgerIngredients';
+import { findIngredient } from '../../../model/ingredient/BurgerIngredients';
 
 const initialState = {
     ingredients: {
@@ -10,6 +10,7 @@ const initialState = {
     },
     totalPrice: 4
 };
+
 
 const burgerReducer = (state = initialState, action) => {
     switch (action.type) {

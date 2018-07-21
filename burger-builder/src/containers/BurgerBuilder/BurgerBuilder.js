@@ -10,7 +10,8 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
-import * as burgerActions from '../../store/reducers/burgerActions';
+import * as burgerActions from '../../store/modules/burger/burgerActions';
+import { purchasable } from '../../store/modules/burger/burgerSelectors';
 
 class BurgerBuilder extends Component {
 
@@ -96,18 +97,18 @@ class BurgerBuilder extends Component {
 
 }
 
-const getPurchasable = state => {
-    const sum = Object.keys(state.ingredients)
-        .map(key => state.ingredients[key])
-        .reduce((prev, next) => prev + next, 0);
-    return sum > 0;
-};
+// const getPurchasable = state => {
+//     const sum = Object.keys(state.ingredients)
+//         .map(key => state.ingredients[key])
+//         .reduce((prev, next) => prev + next, 0);
+//     return sum > 0;
+// };
 
 const mapStateToProps = state => {
     return {
         ingredients: state.ingredients,
         totalPrice: state.totalPrice,
-        purchasable: getPurchasable(state)
+        purchasable: purchasable(state)
     }
 };
 
