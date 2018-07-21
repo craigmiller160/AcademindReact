@@ -5,15 +5,12 @@ import AddPerson from '../components/AddPerson/AddPerson';
 import * as actions from '../store/actions';
 
 class Persons extends Component {
-    state = {
-        persons: []
-    };
 
-    personAddedHandler = () => {
+    personAddedHandler = person => {
         const newPerson = {
             id: Math.random(), // not really unique but good enough here!
-            name: 'Max',
-            age: Math.floor( Math.random() * 40 )
+            name: person.name,
+            age: person.age
         };
         this.props.addPerson(newPerson);
     };
