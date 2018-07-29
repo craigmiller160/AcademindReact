@@ -23,7 +23,7 @@ class Counter extends Component {
                 <CounterControl label="Subtract 5" clicked={() => this.props.onSubtractCounter(5)}  />
                 <hr />
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
-                <ul>
+                <ul style={{listStyle: 'none'}}>
                     {resultElems}
                 </ul>
             </div>
