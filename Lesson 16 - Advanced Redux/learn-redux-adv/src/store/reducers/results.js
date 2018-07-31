@@ -6,7 +6,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actions.STORE_RESULT:
+        case actions.SAVE_RESULT:
             return {
                 ...state,
                 results: state.results.concat({id: new Date(), value: action.value})
