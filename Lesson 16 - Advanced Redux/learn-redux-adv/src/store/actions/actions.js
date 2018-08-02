@@ -3,7 +3,6 @@ export const ADD_COUNTER = 'ADD_COUNTER';
 export const DEC_COUNTER = 'DEC_COUNTER';
 export const SUB_COUNTER = 'SUB_COUNTER';
 export const STORE_RESULT = 'STORE_RESULT';
-export const SAVE_RESULT = 'SAVE_RESULT';
 export const DELETE_RESULT = 'DELETE_RESULT';
 
 export const incCounter = () => {
@@ -42,7 +41,7 @@ export const storeResult = value => {
 
 export const saveResult = value => {
     return {
-        type: SAVE_RESULT,
+        type: STORE_RESULT,
         value
     }
 };
