@@ -9,9 +9,10 @@ export const storeResult = value => {
 };
 
 export const saveResult = value => {
+    const updatedResult = value * 2;
     return {
         type: STORE_RESULT,
-        value
+        value: updatedResult
     }
 };
 
