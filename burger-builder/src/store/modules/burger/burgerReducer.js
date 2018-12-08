@@ -1,4 +1,4 @@
-import * as burgerActions from './burgerActions';
+import * as burgerActions from './burgerActionTypes';
 import { findIngredient } from '../../../model/ingredient/BurgerIngredients';
 
 const initialState = {

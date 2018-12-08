@@ -96,9 +96,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setIngredients: ingredients => dispatch({type: burgerActions.SET_INGREDIENTS, ingredients}),
-        addIngredient: ingredientType => dispatch({type: burgerActions.ADD_INGREDIENT, ingredientType}),
-        removeIngredient: ingredientType => dispatch({type: burgerActions.REMOVE_INGREDIENT, ingredientType})
+        setIngredients: ingredients => dispatch(burgerActions.setIngredients(ingredients)),
+        addIngredient: ingredientType => dispatch(burgerActions.addIngredient(ingredientType)),
+        removeIngredient: ingredientType => dispatch(burgerActions.removeIngredient(ingredientType))
     }
 };
 
