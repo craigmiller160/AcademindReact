@@ -3,7 +3,7 @@ import { DELETE_RESULT, STORE_RESULT } from './actionTypes';
 export const storeResult = value => {
     return (dispatch, getState) => {
         setTimeout(() => {
-            const oldCounter = getState().ctr.counter;
+            const oldCounter = getState().counter.counter;
             console.log(`Old Counter: ${oldCounter}`);
             dispatch(saveResult(value));
         }, 2000);
