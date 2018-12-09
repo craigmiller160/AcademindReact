@@ -1,4 +1,5 @@
 import * as orderActionTypes from './orderActionTypes';
+import * as errorActions from '../error/errorActions';
 import axiosOrders from '../../../http/axios-orders';
 
 export const purchaseBurgerSuccess = (id, orderData) => {
@@ -31,6 +32,7 @@ export const tryPurchaseBurger = orderData => {
         }
         catch (ex) {
             dispatch(purchaseBurgerFail(ex));
+            dispatch(errorActions.setError(ex));
         }
     }
 };
