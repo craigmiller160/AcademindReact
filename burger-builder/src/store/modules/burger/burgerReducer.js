@@ -12,7 +12,12 @@ const burgerReducer = (state = initialState, action) => {
         case burgerActions.SET_INGREDIENTS:
             return {
                 ...state,
-                ingredients: action.ingredients
+                ingredients: {
+                    salad: action.ingredients.salad,
+                    bacon: action.ingredients.bacon,
+                    cheese: action.ingredients.cheese,
+                    meat: action.ingredients.meat
+                }
             };
         case burgerActions.ADD_INGREDIENT:
             return {
