@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classes from './ContactData.css';
 import Button from '../../../components/UI/Button/Button';
 import { ingredientsPropType } from '../../../model/ingredient/BurgerIngredients';
-import axiosOrders from '../../../http/axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { withRouter } from 'react-router-dom';
 import Input from '../../../components/UI/Form/Input/Input';
@@ -55,8 +54,7 @@ class ContactData extends Component {
                 ]
             })
         ],
-        formIsValid: false,
-        loading: false
+        formIsValid: false
     };
 
     formInputChangeHandler = event => {
@@ -101,12 +99,6 @@ class ContactData extends Component {
     orderBurgerHandler = event => {
         event.preventDefault();
         if (this.state.formIsValid) {
-            this.setState({loading: true}, this.addNewPurchase);
-        }
-    };
-
-    async addNewPurchase() {
-        try {
             const formData = {};
             this.state.orderForm
                 .forEach(formInput => formData[formInput.elementName] = formInput.value);
@@ -118,18 +110,9 @@ class ContactData extends Component {
             };
 
             this.props.tryPurchase(order);
-
-            // const res = await axiosOrders.post('/orders.json', order);
-            // console.log(res);
+            // this.props.history.push('/'); //TODO changing this
         }
-        catch (ex) {
-            console.log(ex);
-        }
-        finally {
-            this.setState({loading: false}); //TODO changing this
-            this.props.history.push('/'); //TODO changing this
-        }
-    }
+    };
 
     render() {
         const formInputs = this.state.orderForm
@@ -156,7 +139,7 @@ class ContactData extends Component {
             </form>
         );
 
-        if (this.state.loading) {
+        if (this.props.orderLoading) {
             form = <Spinner />
         }
 
@@ -173,7 +156,8 @@ class ContactData extends Component {
 ContactData.propTypes = {
     ingredients: ingredientsPropType,
     totalData: PropTypes.number,
-    tryPurchase: PropTypes.func
+    tryPurchase: PropTypes.func,
+    orderLoading: PropTypes.bool
 };
 
 export default withRouter(ContactData);

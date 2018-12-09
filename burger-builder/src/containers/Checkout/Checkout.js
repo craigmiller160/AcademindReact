@@ -4,6 +4,9 @@ import { Route } from 'react-router-dom';
 import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
 import * as orderActions from '../../store/modules/order/orderActions';
+import * as errorActions from '../../store/modules/error/errorActions';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import axiosOrders from '../../http/axios-orders';
 
 class Checkout extends Component {
 
@@ -31,6 +34,7 @@ class Checkout extends Component {
                         <ContactData
                             ingredients={this.props.ingredients}
                             totalPrice={this.props.totalPrice}
+                            orderLoading={this.props.orderLoading}
                             tryPurchase={this.props.onTryPurchaseBurger}/>
                     )} />
             </div>
@@ -42,14 +46,17 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         ingredients: state.burger.ingredients,
-        totalPrice: state.burger.totalPrice
+        totalPrice: state.burger.totalPrice,
+        error: state.error.error,
+        orderLoading: state.order.orderLoading
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTryPurchaseBurger: orderData => dispatch(orderActions.tryPurchaseBurger(orderData))
+        onTryPurchaseBurger: orderData => dispatch(orderActions.tryPurchaseBurger(orderData)),
+        setError: error => dispatch(errorActions.setError(error))
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Checkout, axiosOrders));
