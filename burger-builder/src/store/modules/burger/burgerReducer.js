@@ -1,9 +1,11 @@
 import * as burgerActions from './burgerActionTypes';
 import { findIngredient } from '../../../model/ingredient/BurgerIngredients';
 
+const DEFAULT_PRICE = 4;
+
 const initialState = {
     ingredients: null,
-    totalPrice: 4
+    totalPrice: DEFAULT_PRICE
 };
 
 const setIngredients = (state, action) => {
@@ -14,7 +16,8 @@ const setIngredients = (state, action) => {
             bacon: action.ingredients.bacon,
             cheese: action.ingredients.cheese,
             meat: action.ingredients.meat
-        }
+        },
+        totalPrice: DEFAULT_PRICE
     }
 };
 
