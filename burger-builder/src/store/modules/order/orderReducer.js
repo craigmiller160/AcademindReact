@@ -2,7 +2,8 @@ import * as orderActionTypes from './orderActionTypes';
 
 const initialState = {
     orders: [],
-    orderLoading: false
+    orderLoading: false,
+    purchased: false
 };
 
 const purchaseBurgerSuccess = (state, action) => {
@@ -14,7 +15,8 @@ const purchaseBurgerSuccess = (state, action) => {
     return {
         ...state,
         orderLoading: false,
-        orders: state.orders.concat(newOrder)
+        orders: state.orders.concat(newOrder),
+        purchased: true
     };
 };
 
@@ -40,6 +42,13 @@ const setOrders = (state, action) => {
     }
 };
 
+const purchaseInit = (state, action) => {
+    return {
+        ...state,
+        purchased: false
+    }
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case orderActionTypes.PURCHASE_BURGER_SUCCESS:
@@ -50,6 +59,8 @@ const reducer = (state = initialState, action) => {
             return startOrderAsync(state, action);
         case orderActionTypes.SET_ORDERS:
             return setOrders(state, action);
+        case orderActionTypes.PURCHASE_INIT:
+            return purchaseInit(state, action);
         default:
             return state;
     }

@@ -37,6 +37,12 @@ export const tryPurchaseBurger = orderData => {
     }
 };
 
+export const purchaseInit = () => {
+    return {
+        type: orderActionTypes.PURCHASE_INIT
+    }
+};
+
 export const setOrders = orders => {
     return {
         type: orderActionTypes.SET_ORDERS,
