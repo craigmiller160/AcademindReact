@@ -18,28 +18,38 @@ const purchaseBurgerSuccess = (state, action) => {
     };
 };
 
-const purchaseBurgerFail = (state, action) => {
+const orderAsyncFail = (state, action) => {
     return {
         ...state,
         orderLoading: false
     };
 };
 
-const startPurchaseBurger = (state, action) => {
+const startOrderAsync = (state, action) => {
     return {
         ...state,
         orderLoading: true
     };
 };
 
+const setOrders = (state, action) => {
+    return {
+        ...state,
+        orders: action.orders,
+        orderLoading: false
+    }
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case orderActionTypes.PURCHASE_BURGER_SUCCESS:
             return purchaseBurgerSuccess(state, action);
-        case orderActionTypes.PURCHASE_BURGER_FAIL:
-            return purchaseBurgerFail(state, action);
-        case orderActionTypes.START_PURCHASE_BURGER:
-            return startPurchaseBurger(state, action);
+        case orderActionTypes.ORDER_ASYNC_FAIL:
+            return orderAsyncFail(state, action);
+        case orderActionTypes.START_ORDER_ASYNC:
+            return startOrderAsync(state, action);
+        case orderActionTypes.SET_ORDERS:
+            return setOrders(state, action);
         default:
             return state;
     }

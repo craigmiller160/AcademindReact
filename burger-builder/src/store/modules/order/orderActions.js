@@ -10,28 +10,53 @@ export const purchaseBurgerSuccess = (id, orderData) => {
     }
 };
 
-export const purchaseBurgerFail = error => {
+export const orderAsyncFail = error => {
     return {
-        type: orderActionTypes.PURCHASE_BURGER_FAIL,
+        type: orderActionTypes.ORDER_ASYNC_FAIL,
         error
     }
 };
 
-export const startPurchaseBurger = () => {
+export const startOrderAsync = () => {
     return {
-        type: orderActionTypes.START_PURCHASE_BURGER
+        type: orderActionTypes.START_ORDER_ASYNC
     }
 };
 
 export const tryPurchaseBurger = orderData => {
     return async dispatch => {
         try {
-            dispatch(startPurchaseBurger());
+            dispatch(startOrderAsync());
             const res = await axiosOrders.post('/orders.json', orderData);
             dispatch(purchaseBurgerSuccess(res.data.name, orderData));
         }
         catch (ex) {
-            dispatch(purchaseBurgerFail(ex));
+            dispatch(orderAsyncFail(ex));
+            dispatch(errorActions.setError(ex));
+        }
+    }
+};
+
+export const setOrders = orders => {
+    return {
+        type: orderActionTypes.SET_ORDERS,
+        orders
+    }
+};
+
+export const getAllOrders = () => {
+    return async dispatch => {
+        try {
+            dispatch(startOrderAsync());
+            const res = await axiosOrders.get('/orders.json');
+            const orders = Object.keys(res.data).map(key => ({
+                id: key,
+                ...res.data[key]
+            }));
+            dispatch(setOrders(orders));
+        }
+        catch (ex) {
+            dispatch(orderAsyncFail(ex));
             dispatch(errorActions.setError(ex));
         }
     }
