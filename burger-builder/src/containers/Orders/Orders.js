@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Order from '../../components/Order/Order';
 import axiosOrders from '../../http/axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import { connect } from 'react-redux';
+import * as errorActions from '../../store/modules/error/errorActions';
 
 class Orders extends Component {
 
@@ -42,4 +44,16 @@ class Orders extends Component {
 
 }
 
-export default withErrorHandler(Orders, axiosOrders);
+const mapStateToProps = state => {
+    return {
+        error: state.error.error
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setError: error => dispatch(errorActions.setError(error))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axiosOrders));
