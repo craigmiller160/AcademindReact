@@ -36,7 +36,7 @@ class ContactData extends Component {
         });
     };
 
-    static checkValidity(value, rules) {
+    checkValidity(value, rules) {
         let isValid = true;
 
         if (rules && rules.required) {
