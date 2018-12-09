@@ -9,6 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { connect } from 'react-redux';
 import * as burgerActions from '../../store/modules/burger/burgerActions';
+import * as errorActions from '../../store/modules/error/errorActions';
 import { purchasable, disabledInfo } from '../../store/modules/burger/burgerSelectors';
 
 class BurgerBuilder extends Component {
@@ -87,10 +88,11 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.ingredients,
-        totalPrice: state.totalPrice,
+        ingredients: state.burger.ingredients,
+        totalPrice: state.burger.totalPrice,
         purchasable: purchasable(state),
-        disabledInfo: disabledInfo(state)
+        disabledInfo: disabledInfo(state),
+        error: state.error.error
     }
 };
 
@@ -98,7 +100,8 @@ const mapDispatchToProps = dispatch => {
     return {
         setIngredients: ingredients => dispatch(burgerActions.setIngredients(ingredients)),
         addIngredient: ingredientType => dispatch(burgerActions.addIngredient(ingredientType)),
-        removeIngredient: ingredientType => dispatch(burgerActions.removeIngredient(ingredientType))
+        removeIngredient: ingredientType => dispatch(burgerActions.removeIngredient(ingredientType)),
+        setError: error => dispatch(errorActions.setError(error))
     }
 };
 
