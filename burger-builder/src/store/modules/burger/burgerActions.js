@@ -1,4 +1,5 @@
 import * as burgerActionTypes from './burgerActionTypes';
+import axiosOrders from '../../../http/axios-orders';
 
 export const addIngredient = ingredientType => {
     return {
@@ -18,5 +19,17 @@ export const setIngredients = ingredients => {
     return {
         type: burgerActionTypes.SET_INGREDIENTS,
         ingredients
+    }
+};
+
+export const initIngredients = () => {
+    return async dispatch => {
+        try {
+            const res = await axiosOrders.get('/ingredients.json');
+            dispatch(setIngredients(res.data));
+        }
+        catch (ex) {
+            console.log(ex);
+        }
     }
 };

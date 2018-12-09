@@ -19,13 +19,13 @@ class BurgerBuilder extends Component {
     };
 
     async componentDidMount() {
-        try {
-            const res = await axiosOrders.get('/ingredients.json'); //TODO this should be moved to redux after i learn how to do asynchronous logic there
-            this.props.setIngredients(res.data);
-        }
-        catch (ex) {
-            console.log(ex);
-        }
+        // try {
+        //     const res = await axiosOrders.get('/ingredients.json'); //TODO this should be moved to redux after i learn how to do asynchronous logic there
+        //     this.props.setIngredients(res.data);
+        // }
+        // catch (ex) {
+        //     console.log(ex);
+        // }
     }
 
     purchaseHandler = () => {
