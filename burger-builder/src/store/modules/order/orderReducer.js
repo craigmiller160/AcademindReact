@@ -8,7 +8,7 @@ const initialState = {
 const purchaseBurgerSuccess = (state, action) => {
     const newOrder = {
         ...action.orderData,
-        id: action.order.id
+        id: action.id
     };
 
     return {
