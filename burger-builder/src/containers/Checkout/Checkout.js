@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
 import * as orderActions from '../../store/modules/order/orderActions';
@@ -22,23 +22,28 @@ class Checkout extends Component {
     };
 
     render() {
-        return (
-            <div style={{width: '100%'}}>
-                <CheckoutSummary
-                    ingredients={this.props.ingredients}
-                    checkoutCancelled={this.checkoutCancelledHandler}
-                    checkoutContinued={this.checkoutContinuedHandler} />
-                <Route
-                    path={`${this.props.match.url}/contact-data`}
-                    render={() => (
-                        <ContactData
-                            ingredients={this.props.ingredients}
-                            totalPrice={this.props.totalPrice}
-                            orderLoading={this.props.orderLoading}
-                            tryPurchase={this.props.onTryPurchaseBurger}/>
-                    )} />
-            </div>
-        );
+        let summary = <Redirect to="/" />;
+        if (this.props.ingredients) {
+            summary = (
+                <div style={{width: '100%'}}>
+                    <CheckoutSummary
+                        ingredients={this.props.ingredients}
+                        checkoutCancelled={this.checkoutCancelledHandler}
+                        checkoutContinued={this.checkoutContinuedHandler} />
+                    <Route
+                        path={`${this.props.match.url}/contact-data`}
+                        render={() => (
+                            <ContactData
+                                ingredients={this.props.ingredients}
+                                totalPrice={this.props.totalPrice}
+                                orderLoading={this.props.orderLoading}
+                                tryPurchase={this.props.onTryPurchaseBurger}/>
+                        )} />
+                </div>
+            )
+        }
+
+        return summary;
     }
 
 }
