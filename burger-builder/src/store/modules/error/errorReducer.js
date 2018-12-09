@@ -4,13 +4,17 @@ const initialState = {
     error: null
 };
 
+const setError = (state, action) => {
+    return {
+        ...state,
+        error: action.error
+    }
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case errorActionTypes.SET_ERROR:
-            return {
-                ...state,
-                error: action.error
-            };
+            return setError(state, action);
         default:
             return state;
     }
