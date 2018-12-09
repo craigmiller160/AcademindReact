@@ -2,9 +2,7 @@ import * as burgerActions from './burgerActionTypes';
 import { findIngredient } from '../../../model/ingredient/BurgerIngredients';
 
 const initialState = {
-    ingredients: {
-
-    },
+    ingredients: {},
     totalPrice: 4
 };
 

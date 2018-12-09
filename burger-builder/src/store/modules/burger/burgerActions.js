@@ -1,5 +1,6 @@
 import * as burgerActionTypes from './burgerActionTypes';
 import axiosOrders from '../../../http/axios-orders';
+import * as errorActions from '../error/errorActions';
 
 export const addIngredient = ingredientType => {
     return {
@@ -29,7 +30,7 @@ export const initIngredients = () => {
             dispatch(setIngredients(res.data));
         }
         catch (ex) {
-            console.log(ex);
+            errorActions.setError(ex);
         }
     }
 };
