@@ -3,6 +3,7 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 import { Route } from 'react-router-dom';
 import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
+import * as orderActions from '../../store/modules/order/orderActions';
 
 class Checkout extends Component {
 
@@ -29,7 +30,8 @@ class Checkout extends Component {
                     render={() => (
                         <ContactData
                             ingredients={this.props.ingredients}
-                            totalPrice={this.props.totalPrice}/>
+                            totalPrice={this.props.totalPrice}
+                            tryPurchase={this.props.onTryPurchaseBurger}/>
                     )} />
             </div>
         );
@@ -44,4 +46,10 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+    return {
+        onTryPurchaseBurger: orderData => dispatch(orderActions.tryPurchaseBurger(orderData))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

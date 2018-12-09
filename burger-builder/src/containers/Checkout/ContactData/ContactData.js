@@ -117,15 +117,17 @@ class ContactData extends Component {
                 orderData: formData
             };
 
-            const res = await axiosOrders.post('/orders.json', order);
-            console.log(res);
+            this.props.tryPurchase(order);
+
+            // const res = await axiosOrders.post('/orders.json', order);
+            // console.log(res);
         }
         catch (ex) {
             console.log(ex);
         }
         finally {
-            this.setState({loading: false});
-            this.props.history.push('/');
+            this.setState({loading: false}); //TODO changing this
+            this.props.history.push('/'); //TODO changing this
         }
     }
 
@@ -170,7 +172,8 @@ class ContactData extends Component {
 
 ContactData.propTypes = {
     ingredients: ingredientsPropType,
-    totalData: PropTypes.number
+    totalData: PropTypes.number,
+    tryPurchase: PropTypes.func
 };
 
 export default withRouter(ContactData);
