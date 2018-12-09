@@ -10,10 +10,6 @@ import axiosOrders from '../../http/axios-orders';
 
 class Checkout extends Component {
 
-    componentDidMount() {
-        this.props.purchaseInit();
-    }
-
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
     };
@@ -65,8 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTryPurchaseBurger: orderData => dispatch(orderActions.tryPurchaseBurger(orderData)),
-        setError: error => dispatch(errorActions.setError(error)),
-        purchaseInit: () => dispatch(orderActions.purchaseInit())
+        setError: error => dispatch(errorActions.setError(error))
     }
 };
 

@@ -10,6 +10,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { connect } from 'react-redux';
 import * as burgerActions from '../../store/modules/burger/burgerActions';
 import * as errorActions from '../../store/modules/error/errorActions';
+import * as orderActions from '../../store/modules/order/orderActions';
 import { purchasable, disabledInfo } from '../../store/modules/burger/burgerSelectors';
 
 class BurgerBuilder extends Component {
@@ -32,6 +33,7 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinueHandler = () => {
+        this.props.purchaseInit();
         this.props.history.push({
             pathname: '/checkout'
         });
@@ -96,7 +98,8 @@ const mapDispatchToProps = dispatch => {
         addIngredient: ingredientType => dispatch(burgerActions.addIngredient(ingredientType)),
         removeIngredient: ingredientType => dispatch(burgerActions.removeIngredient(ingredientType)),
         initIngredients: () => dispatch(burgerActions.initIngredients()),
-        setError: error => dispatch(errorActions.setError(error))
+        setError: error => dispatch(errorActions.setError(error)),
+        purchaseInit: () => dispatch(orderActions.purchaseInit())
     }
 };
 
